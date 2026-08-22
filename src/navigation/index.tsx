@@ -69,9 +69,10 @@ export function AppNavigator() {
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
-          // Light and simple: a quick crossfade between screens.
-          animation: 'fade',
-          animationDuration: 200,
+          // The navigator switches instantly; ScreenEntrance plays a clean,
+          // fade-free settle on every focus (both push and back), so content
+          // is fully clear from the first frame.
+          animation: 'none',
           gestureEnabled: true,
         }}
         initialRouteName="Splash"

@@ -1,3 +1,4 @@
+import { useIsFocused } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated, Dimensions, Easing, StyleProp, View, ViewStyle } from 'react-native';
 
@@ -5,9 +6,11 @@ import { Animated, Dimensions, Easing, StyleProp, View, ViewStyle } from 'react-
 export const easeOutExpo = Easing.bezier(0.16, 1, 0.3, 1);
 
 /**
- * Screen container. Page transitions are handled entirely by the navigator's
- * quick crossfade — no extra per-screen motion, so content is instantly
- * clear and the app feels light.
+ * The design's `ehScreen` entrance (fade + 14px rise, 450ms,
+ * cubic-bezier(.16,1,.3,1)), replayed on every focus — going forward and
+ * coming back. The fade is compressed into the first ~35% of the timeline
+ * (≈60ms with this front-loaded curve), so components read as fully clear
+ * almost immediately while the soft rise carries the rest of the motion.
  */
 export function ScreenEntrance({
   children,
@@ -16,7 +19,37 @@ export function ScreenEntrance({
   children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
 }) {
-  return <View style={[{ flex: 1 }, style]}>{children}</View>;
+  const anim = useRef(new Animated.Value(1)).current;
+  const focused = useIsFocused();
+
+  useEffect(() => {
+    if (focused) {
+      anim.setValue(0);
+      Animated.timing(anim, {
+        toValue: 1,
+        duration: 450,
+        easing: easeOutExpo,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [focused, anim]);
+
+  return (
+    <Animated.View
+      style={[
+        {
+          flex: 1,
+          opacity: anim.interpolate({ inputRange: [0, 0.35, 1], outputRange: [0, 1, 1] }),
+          transform: [
+            { translateY: anim.interpolate({ inputRange: [0, 1], outputRange: [14, 0] }) },
+          ],
+        },
+        style,
+      ]}
+    >
+      {children}
+    </Animated.View>
+  );
 }
 
 /**
@@ -188,7 +221,10 @@ export function RevealOnScroll({
   }
 
   const start = top - winH; // item's top touches the viewport bottom
-  const end = start + 280; // slow reveal: completes over 280px of scrolling
+  // Completes within 140px of scrolling — short enough that even the last
+  // card on a page always finishes its reveal before the scroll runs out
+  // (a longer distance left bottom cards stuck semi-transparent).
+  const end = start + 140;
   return (
     <Animated.View
       ref={ref}
@@ -204,7 +240,7 @@ export function RevealOnScroll({
             {
               translateY: scrollY.interpolate({
                 inputRange: [start, end],
-                outputRange: [28, 0],
+                outputRange: [20, 0],
                 extrapolate: 'clamp',
               }),
             },
@@ -212,7 +248,7 @@ export function RevealOnScroll({
               // Simple extra touch: the card grows gently as it reveals.
               scale: scrollY.interpolate({
                 inputRange: [start, end],
-                outputRange: [0.96, 1],
+                outputRange: [0.97, 1],
                 extrapolate: 'clamp',
               }),
             },
