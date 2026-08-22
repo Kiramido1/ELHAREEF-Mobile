@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<meta name="ext-resource-dependency" content="assets/pitch-0.png" data-resource-id="pitch0" />
+<meta name="ext-resource-dependency" content="assets/pitch-1.png" data-resource-id="pitch1" />
+<meta name="ext-resource-dependency" content="assets/pitch-2.png" data-resource-id="pitch2" />
+<meta name="ext-resource-dependency" content="assets/pitch-3.png" data-resource-id="pitch3" />
+<meta name="ext-resource-dependency" content="assets/symbol.png" data-resource-id="symbolLight" />
+<meta name="ext-resource-dependency" content="assets/symbol-reverse.png" data-resource-id="symbolDark" />
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#061533">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#061533"/><circle cx="100" cy="88" r="34" fill="#FBFCFA"/><circle cx="100" cy="88" r="14" fill="#061533"/><rect x="58" y="140" width="84" height="10" rx="5" fill="#24A551"/></svg>
+</template>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&amp;family=IBM+Plex+Sans+Arabic:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:var(--tint);font-family:Archivo,'IBM Plex Sans Arabic',system-ui,sans-serif;color:var(--ink)}
+a{color:#24A551}a:hover{color:var(--ink)}
+*{box-sizing:border-box}
+button{font-family:Archivo,'IBM Plex Sans Arabic',system-ui,sans-serif}
+input,textarea{font-family:Archivo,'IBM Plex Sans Arabic',system-ui,sans-serif}
+::-webkit-scrollbar{width:0;height:0}
+@keyframes ehPop{0%{transform:scale(.4);opacity:0}70%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}}
+@keyframes ehPulse{0%,100%{opacity:.25}50%{opacity:1}}
+@keyframes ehShimmer{0%{background-position:-360px 0}100%{background-position:360px 0}}
+@keyframes ehUp{from{transform:translateY(24px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes ehMarkIn{0%{transform:scale(.92);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes ehScreen{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:translateY(0)}}
+[data-screen-label]{animation:ehScreen .45s cubic-bezier(.16,1,.3,1) both}
+@keyframes ehPick{0%{transform:scale(.96);opacity:.7}100%{transform:scale(1);opacity:1}}
+@keyframes ehMsgIn{0%{opacity:0;transform:translateY(12px) scale(.94)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes ehObA{0%{opacity:0;transform:translateX(30px)}100%{opacity:1;transform:translateX(0)}}
+@keyframes ehObB{0%{opacity:0;transform:translateX(30px)}100%{opacity:1;transform:translateX(0)}}
+@keyframes ehObBackA{0%{opacity:0;transform:translateX(-30px)}100%{opacity:1;transform:translateX(0)}}
+@keyframes ehObBackB{0%{opacity:0;transform:translateX(-30px)}100%{opacity:1;transform:translateX(0)}}
+button:active{transform:scale(.94);transition:transform .1s}
+:root{--bg:#FBFCFA;--card:#ffffff;--tint:#F0F9E4;--bar:rgba(251,252,250,.95);--ink:#061533;--navyBtn:#061533;--chipOn:#061533;--chipOnFg:#fff;--segOn:#fff;--disabled:#e4e9e2;--chipGray:#eef1f5;--shim2:#e2eed2;--avatarNavy:#061533;--limeBd:#BDF961;--limeChip:#BDF961;--limeChipFg:#061533;--limeTint:rgba(189,249,97,.21);--ink06:rgba(6,21,51,.06);--ink08:rgba(6,21,51,.08);--ink1:rgba(6,21,51,.1);--ink12:rgba(6,21,51,.12);--ink14:rgba(6,21,51,.14);--ink15:rgba(6,21,51,.15);--ink25:rgba(6,21,51,.25);--ink3:rgba(6,21,51,.3);--ink35:rgba(6,21,51,.35);--ink4:rgba(6,21,51,.4);--ink45:rgba(6,21,51,.45);--ink5:rgba(6,21,51,.5);--ink55:rgba(6,21,51,.55);--ink6:rgba(6,21,51,.6);--ink65:rgba(6,21,51,.65);--ink7:rgba(6,21,51,.7);--ink75:rgba(6,21,51,.75)}
+[data-theme="dark"]{--bg:#0C1220;--card:#131A2C;--tint:#1A2338;--bar:rgba(12,18,32,.93);--ink:#E6ECF7;--navyBtn:#243356;--chipOn:#DFE7F4;--chipOnFg:#0F172A;--segOn:#253251;--disabled:#1D2740;--chipGray:#1A2338;--shim2:#222F4E;--avatarNavy:#2B3A61;--limeBd:rgba(189,249,97,.35);--limeChip:rgba(189,249,97,.14);--limeChipFg:#BDF961;--limeTint:rgba(189,249,97,.07);--ink06:rgba(226,233,246,.07);--ink08:rgba(226,233,246,.09);--ink1:rgba(226,233,246,.11);--ink12:rgba(226,233,246,.13);--ink14:rgba(226,233,246,.15);--ink15:rgba(226,233,246,.17);--ink25:rgba(226,233,246,.28);--ink3:rgba(226,233,246,.33);--ink35:rgba(226,233,246,.38);--ink4:rgba(226,233,246,.44);--ink45:rgba(226,233,246,.5);--ink5:rgba(226,233,246,.55);--ink55:rgba(226,233,246,.6);--ink6:rgba(226,233,246,.66);--ink65:rgba(226,233,246,.7);--ink7:rgba(226,233,246,.74);--ink75:rgba(226,233,246,.78)}
+[data-theme]{color:var(--ink)}
+[data-theme] input,[data-theme] textarea,[data-theme] button{color:var(--ink)}
+@keyframes ehLogoIn{0%{transform:scale(.55);opacity:0}55%{transform:scale(1.05);opacity:1}100%{transform:scale(1);opacity:1}}
+@keyframes ehFade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ehGlowP{0%,100%{opacity:.35;transform:translate(-50%,-50%) scale(1)}50%{opacity:.7;transform:translate(-50%,-50%) scale(1.18)}}
+@keyframes ehLoad{from{transform:translateX(-110%)}to{transform:translateX(320%)}}
+</style>
+<script src="image-slot.js"></script>
+</helmet>
+<div style="display:flex;height:100vh;overflow:hidden">
+<aside style="width:264px;flex:none;background:var(--bg);border-right:1px solid var(--ink08);overflow-y:auto;padding:20px 16px 28px">
+  <img src="assets/wordmark.png" alt="ELHAREEF" style="width:172px;display:block;margin:2px 0 4px">
+  <div style="font-size:11.5px;color:var(--ink55);line-height:1.5;margin:0 0 18px">Mobile app · interactive prototype<br>Book. Play. Win.</div>
+  <sc-for list="{{ rail }}" as="g" hint-placeholder-count="5">
+    <div style="margin:0 0 16px">
+      <div style="font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink4);margin:0 0 6px 8px">{{ g.name }}</div>
+      <div style="display:flex;flex-direction:column;gap:2px">
+      <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="5">
+        <button onClick="{{ it.go }}" style="text-align:left;border:none;cursor:pointer;padding:7px 10px;border-radius:9px;font-size:13px;font-weight:500;background:{{ it.bg }};color:{{ it.fg }}">{{ it.label }}</button>
+      </sc-for>
+      </div>
+    </div>
+  </sc-for>
+  <div style="border-top:1px solid var(--ink08);padding:14px 8px 0;margin-top:4px">
+    <div style="font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink4);margin:0 0 8px">Tokens</div>
+    <div style="display:flex;gap:6px;margin:0 0 10px">
+      <div title="Pitch Navy #061533" style="width:22px;height:22px;border-radius:7px;background:var(--navyBtn)"></div>
+      <div title="Turf Green #24A551" style="width:22px;height:22px;border-radius:7px;background:#24A551"></div>
+      <div title="Kick Lime #BDF961" style="width:22px;height:22px;border-radius:7px;background:#BDF961"></div>
+      <div title="Pitch Tint #F0F9E4" style="width:22px;height:22px;border-radius:7px;background:var(--tint);border:1px solid var(--ink1)"></div>
+      <div title="Cloud White #FBFCFA" style="width:22px;height:22px;border-radius:7px;background:var(--bg);border:1px solid var(--ink1)"></div>
+    </div>
+    <div style="font-size:11.5px;color:var(--ink6);line-height:1.65">Archivo · headings &amp; UI<br><span style="font-family:'IBM Plex Sans Arabic'">IBM Plex Sans Arabic</span> · Arabic<br>Navy carries type, green carries actions, lime is a sparing accent.</div>
+    <div style="font-size:11px;color:var(--ink45);line-height:1.6;margin-top:12px">Assumptions: Egypt-first (EGP, +20, Fayoum), phone-number auth, pay at venue by default, fees configurable. Turf graphics are placeholders for real pitch photography.</div>
+  </div>
+</aside>
+<main style="flex:1;overflow:auto;display:flex;align-items:flex-start;justify-content:center;padding:34px 24px">
+  <div style="position:relative;width:414px;flex:none;background:#0a0d16;border-radius:58px;padding:12px;box-shadow:0 30px 70px rgba(3,8,20,.35)">
+    <div data-theme="{{ themeAttr }}" dir="{{ dirAttr }}" style="position:relative;width:390px;height:844px;background:var(--bg);border-radius:46px;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:52px;z-index:40;pointer-events:none;display:flex;align-items:center;justify-content:space-between;padding:6px 30px 0;color:{{ statusColor }}">
+        <div style="font-size:14px;font-weight:600">9:41</div>
+        <div style="display:flex;align-items:center;gap:5px">
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="currentColor"><rect x="0" y="7" width="3" height="5" rx="1"></rect><rect x="4.5" y="5" width="3" height="7" rx="1"></rect><rect x="9" y="2.5" width="3" height="9.5" rx="1"></rect><rect x="13.5" y="0" width="3" height="12" rx="1"></rect></svg>
+          <svg width="24" height="12" viewBox="0 0 24 12"><rect x="0" y="0" width="21" height="12" rx="3.5" fill="none" stroke="currentColor" stroke-opacity=".4"></rect><rect x="2" y="2" width="14" height="8" rx="2" fill="currentColor"></rect><rect x="22" y="4" width="2" height="4" rx="1" fill="currentColor" fill-opacity=".4"></rect></svg>
+        </div>
+      </div>
+      <div style="position:absolute;top:10px;left:50%;transform:translateX(-50%);width:120px;height:32px;background:#0a0d16;border-radius:18px;z-index:41"></div>
+
+      <div ref="{{ scrRef }}" style="position:absolute;inset:0;overflow-y:auto;overflow-x:hidden">
+
+      <sc-if value="{{ vSplash }}" hint-placeholder-val="{{ true }}">
+        <div data-screen-label="Splash" onClick="{{ goOnboarding }}" style="min-height:100%;background:#061533;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;position:relative;overflow:hidden">
+          <div style="position:relative;display:flex;flex-direction:column;align-items:center">
+            <div style="position:absolute;left:50%;top:38%;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(36,165,81,.32),rgba(36,165,81,0) 65%);animation:ehGlowP 3.2s ease-in-out 1s infinite;transform:translate(-50%,-50%)"></div>
+            <img src="assets/splash-logo.png" alt="ELHAREEF" style="position:relative;width:222px;display:block;image-rendering:auto;animation:ehMarkIn 1s cubic-bezier(.16,1,.3,1) both">
+          </div>
+          <sc-if value="{{ arab }}" hint-placeholder-val="{{ true }}"><div dir="rtl" style="margin-top:16px;font-family:'IBM Plex Sans Arabic';font-size:15px;font-weight:600;color:#24A551;animation:ehFade .7s .9s cubic-bezier(.16,1,.3,1) both">الحريف — ملعبك والعبها صح</div></sc-if>
+          <div style="position:absolute;bottom:52px;display:flex;flex-direction:column;align-items:center;gap:16px;animation:ehFade .7s 1.2s cubic-bezier(.16,1,.3,1) both">
+            <div style="width:112px;height:3px;border-radius:99px;background:rgba(251,252,250,.14);overflow:hidden"><div style="width:38%;height:100%;border-radius:99px;background:#BDF961;animation:ehLoad 1.5s ease-in-out .9s infinite"></div></div>
+            <div style="font-size:13px;color:#FBFCFA"><b>ELHAREEF</b> <span style="color:rgba(251,252,250,.75)">— Book. Play. Win.</span></div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vOnboarding }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Onboarding" style="min-height:100%;display:flex;flex-direction:column;padding:64px 24px 40px;background:var(--bg)">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <sc-if value="{{ obCanBack }}" hint-placeholder-val="{{ false }}"><button onClick="{{ obBack }}" style="width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink12);background:var(--card);cursor:pointer;font-size:18px;color:var(--ink)">‹</button></sc-if>
+            <sc-if value="{{ obNoBack }}" hint-placeholder-val="{{ true }}"><div style="width:38px"></div></sc-if>
+            <button onClick="{{ goLogin }}" style="border:none;background:none;color:var(--ink5);font-size:14px;font-weight:500;cursor:pointer;padding:6px">{{ tr.skip }}</button>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:30px">
+            <div style="height:300px;border-radius:24px;position:relative;overflow:hidden;background:{{ obBg }};animation:{{ obAnim }}">
+              <sc-if value="{{ ob0 }}" hint-placeholder-val="{{ true }}">
+                <div style="position:absolute;inset:18px;border:2px solid rgba(251,252,250,.35);border-radius:14px"></div>
+                <div style="position:absolute;top:18px;bottom:18px;left:50%;width:2px;background:rgba(251,252,250,.35)"></div>
+                <div style="position:absolute;top:50%;left:50%;width:92px;height:92px;border:2px solid rgba(251,252,250,.4);border-radius:50%;transform:translate(-50%,-50%)"></div>
+                <div style="position:absolute;bottom:30px;left:34px;background:#BDF961;color:#061533;font-size:12px;font-weight:700;padding:7px 12px;border-radius:999px">2.1 km away</div>
+                <div style="position:absolute;top:34px;right:34px;background:#FDFEFC;color:#0b1533;font-size:12px;font-weight:700;padding:7px 12px;border-radius:999px">★ 4.8</div>
+              </sc-if>
+              <sc-if value="{{ ob1 }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
+                  <div style="background:#FDFEFC;border-radius:12px;padding:11px 22px;font-size:14px;font-weight:600;color:#7f8a9e">6:00 PM</div>
+                  <div style="background:#BDF961;border-radius:12px;padding:12px 26px;font-size:15px;font-weight:700;color:#061533;box-shadow:0 8px 22px rgba(6,21,51,.28)">8:00 PM ✓</div>
+                  <div style="background:#FDFEFC;border-radius:12px;padding:11px 22px;font-size:14px;font-weight:600;color:#7f8a9e">10:00 PM</div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ ob2 }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+                  <div style="display:flex">
+                    <div style="width:58px;height:58px;border-radius:50%;background:#FDFEFC;color:#0b1533;display:flex;align-items:center;justify-content:center;font-weight:700;border:3px solid #24A551">A</div>
+                    <div style="width:58px;height:58px;border-radius:50%;background:var(--navyBtn);color:#FBFCFA;display:flex;align-items:center;justify-content:center;font-weight:700;border:3px solid #24A551;margin-left:-12px">O</div>
+                    <div style="width:58px;height:58px;border-radius:50%;background:#FDFEFC;color:#0b1533;display:flex;align-items:center;justify-content:center;font-weight:700;border:3px solid #24A551;margin-left:-12px">K</div>
+                    <div style="width:58px;height:58px;border-radius:50%;background:#BDF961;color:#061533;display:flex;align-items:center;justify-content:center;font-weight:800;border:3px dashed var(--ink4);margin-left:-12px">+2</div>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+            <div style="animation:{{ obAnimTxt }}">
+              <div style="font-size:27px;font-weight:800;line-height:1.15;letter-spacing:-.01em">{{ obTitle }}</div>
+              <div style="margin-top:10px;font-size:15px;line-height:1.6;color:var(--ink6)">{{ obBody }}</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="display:flex;gap:6px">
+              <div style="width:{{ obDot0w }};height:7px;border-radius:99px;background:{{ obDot0 }}"></div>
+              <div style="width:{{ obDot1w }};height:7px;border-radius:99px;background:{{ obDot1 }}"></div>
+              <div style="width:{{ obDot2w }};height:7px;border-radius:99px;background:{{ obDot2 }}"></div>
+            </div>
+            <button onClick="{{ obNext }}" style="border:none;background:#24A551;color:#fff;font-size:15px;font-weight:600;padding:15px 30px;border-radius:14px;cursor:pointer">{{ obCta }}</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vLogin }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Log in" style="min-height:100%;display:flex;flex-direction:column;padding:80px 24px 40px;background:var(--bg)">
+          <div style="width:76px;height:50px;margin:0 0 22px;background-image:{{ symbolBg }};background-size:contain;background-repeat:no-repeat;background-position:left center"></div>
+          <div style="font-size:28px;font-weight:800;letter-spacing:-.01em">{{ tr.welcome }}</div>
+          <div style="margin-top:8px;font-size:14.5px;color:var(--ink6);line-height:1.55">{{ tr.loginSub }}</div>
+          <div style="margin-top:28px;font-size:12.5px;font-weight:600;color:var(--ink65)">{{ tr.phone }}</div>
+          <div style="margin-top:8px;display:flex;gap:10px">
+            <div style="flex:none;display:flex;align-items:center;padding:0 14px;border:1.5px solid var(--ink14);border-radius:13px;font-size:15px;font-weight:600;background:var(--card)">+20</div>
+            <input placeholder="10 1234 5678" style="flex:1;padding:15px 16px;border:1.5px solid var(--ink14);border-radius:13px;font-size:15px;background:var(--card);outline:none" style-focus="border-color:#24A551">
+          </div>
+          <button onClick="{{ goHome }}" style="margin-top:16px;border:none;background:#24A551;color:#fff;font-size:15.5px;font-weight:600;padding:16px;border-radius:14px;cursor:pointer" style-hover="background:#1e8f46">{{ tr.continue }}</button>
+          <div style="margin:26px 0;display:flex;align-items:center;gap:12px;color:var(--ink35);font-size:12.5px"><div style="flex:1;height:1px;background:var(--ink1)"></div>{{ tr.or }}<div style="flex:1;height:1px;background:var(--ink1)"></div></div>
+          <button onClick="{{ goHome }}" style="border:1.5px solid var(--ink14);background:var(--card);color:var(--ink);font-size:14.5px;font-weight:600;padding:14px;border-radius:14px;cursor:pointer;margin-bottom:10px">{{ tr.google }}</button>
+          <button onClick="{{ goHome }}" style="border:1.5px solid var(--ink14);background:var(--card);color:var(--ink);font-size:14.5px;font-weight:600;padding:14px;border-radius:14px;cursor:pointer">{{ tr.apple }}</button>
+          <div style="margin-top:auto;text-align:center;font-size:14px;color:var(--ink6)">{{ tr.newTo }} <a href="#" onClick="{{ goSignup }}" style="font-weight:600;text-decoration:none">{{ tr.createAcc }}</a></div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vSignup }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Sign up" style="min-height:100%;display:flex;flex-direction:column;padding:70px 24px 40px;background:var(--bg)">
+          <div style="font-size:28px;font-weight:800;letter-spacing:-.01em">{{ tr.createAcc }}</div>
+          <div style="margin-top:8px;font-size:14.5px;color:var(--ink6)">{{ tr.signupSub }}</div>
+          <div style="margin-top:26px;font-size:12.5px;font-weight:600;color:var(--ink65)">{{ tr.fullName }}</div>
+          <input placeholder="Youssef Adel" style="margin-top:8px;padding:15px 16px;border:1.5px solid var(--ink14);border-radius:13px;font-size:15px;background:var(--card);outline:none" style-focus="border-color:#24A551">
+          <div style="margin-top:16px;font-size:12.5px;font-weight:600;color:var(--ink65)">{{ tr.phone }}</div>
+          <div style="margin-top:8px;display:flex;gap:10px">
+            <div style="flex:none;display:flex;align-items:center;padding:0 14px;border:1.5px solid var(--ink14);border-radius:13px;font-size:15px;font-weight:600;background:var(--card)">+20</div>
+            <input placeholder="10 1234 5678" style="flex:1;padding:15px 16px;border:1.5px solid var(--ink14);border-radius:13px;font-size:15px;background:var(--card);outline:none" style-focus="border-color:#24A551">
+          </div>
+          <div style="margin-top:20px;font-size:12.5px;font-weight:600;color:var(--ink65)">{{ tr.prefPos }}</div>
+          <div style="margin-top:9px;display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ positions }}" as="p" hint-placeholder-count="4">
+              <button onClick="{{ p.pick }}" style="border:1.5px solid {{ p.bd }};background:{{ p.bg }};color:{{ p.fg }};font-size:13.5px;font-weight:600;padding:9px 15px;border-radius:999px;cursor:pointer;animation:{{ p.anim }}">{{ p.label }}</button>
+            </sc-for>
+          </div>
+          <div style="margin-top:20px;font-size:12.5px;font-weight:600;color:var(--ink65)">{{ tr.skill }}</div>
+          <div style="margin-top:9px;display:flex;background:var(--tint);border-radius:13px;padding:4px;gap:4px">
+            <sc-for list="{{ skillSeg }}" as="s" hint-placeholder-count="3">
+              <button onClick="{{ s.pick }}" style="flex:1;border:none;background:{{ s.bg }};color:{{ s.fg }};font-size:13px;font-weight:600;padding:10px 0;border-radius:10px;cursor:pointer;box-shadow:{{ s.sh }}">{{ s.label }}</button>
+            </sc-for>
+          </div>
+          <button onClick="{{ goHome }}" style="margin-top:auto;border:none;background:#24A551;color:#fff;font-size:15.5px;font-weight:600;padding:16px;border-radius:14px;cursor:pointer" style-hover="background:#1e8f46">{{ tr.createAcc }}</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vHome }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Home" style="min-height:100%;padding:62px 0 110px;background:var(--bg)">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:0 20px">
+            <div style="display:flex;align-items:center;gap:11px">
+              <div role="img" aria-label="ELHAREEF" style="width:42px;height:28px;background-image:{{ symbolBg }};background-size:contain;background-repeat:no-repeat;background-position:center"></div>
+              <div>
+                <div style="font-size:11.5px;color:var(--ink5);font-weight:500">{{ tPlayingIn }}</div>
+                <div style="font-size:15px;font-weight:700">{{ tr.cairo }} <span style="color:#24A551;font-size:12px">▾</span></div>
+              </div>
+            </div>
+            <button onClick="{{ goProfile }}" style="border:none;cursor:pointer;width:42px;height:42px;border-radius:50%;background:var(--navyBtn);color:#BDF961;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center">Y</button>
+          </div>
+          <div style="padding:0 20px;margin-top:16px">
+            <sc-if value="{{ arab }}" hint-placeholder-val="{{ true }}"><div style="font-size:21px;font-weight:800;letter-spacing:-.01em">{{ tr.greetName }} <span dir="rtl" style="font-family:'IBM Plex Sans Arabic';font-weight:600;font-size:17px;color:#24A551">— يلا نلعب؟</span></div></sc-if>
+            <sc-if value="{{ noArab }}" hint-placeholder-val="{{ false }}"><div style="font-size:21px;font-weight:800;letter-spacing:-.01em">{{ tr.greetFull }}</div></sc-if>
+          </div>
+          <button onClick="{{ goSearch }}" style="display:flex;align-items:center;gap:10px;width:calc(100% - 40px);margin:14px 20px 0;padding:14px 16px;border:1.5px solid var(--ink1);border-radius:14px;background:var(--card);cursor:pointer;color:var(--ink45);font-size:14.5px">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5 21 21"></path></svg>
+            {{ tSearchPh }}
+          </button>
+          <div style="display:flex;gap:8px;overflow-x:auto;padding:14px 20px 4px">
+            <sc-for list="{{ chips }}" as="c" hint-placeholder-count="6">
+              <button onClick="{{ c.pick }}" style="flex:none;border:1.5px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;cursor:pointer;animation:{{ c.anim }}">{{ c.label }}</button>
+            </sc-for>
+          </div>
+          <button onClick="{{ goBooking }}" style="position:relative;display:block;width:calc(100% - 40px);margin:14px 20px 0;padding:22px 22px;border:none;border-radius:20px;background:var(--navyBtn);color:#FBFCFA;text-align:left;cursor:pointer;overflow:hidden">
+            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border:2px solid rgba(189,249,97,.22);border-radius:50%"></div>
+            <div style="position:absolute;top:8px;right:8px;width:64px;height:64px;border:2px solid rgba(36,165,81,.4);border-radius:50%"></div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:.08em;color:#BDF961;text-transform:uppercase">{{ tr.tonightAt }}</div>
+            <div style="margin-top:7px;font-size:21px;font-weight:800;letter-spacing:-.01em">{{ tBookPitch }}</div>
+            <div style="margin-top:5px;font-size:13.5px;color:rgba(251,252,250,.65)">{{ heroMeta }}</div>
+            <div style="margin-top:14px;display:inline-flex;align-items:center;gap:8px;background:#BDF961;color:#061533;font-size:13.5px;font-weight:700;padding:10px 16px;border-radius:999px">{{ tBookNow }} <span style="font-size:15px">›</span></div>
+          </button>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 20px;margin-top:26px">
+            <div style="font-size:17px;font-weight:700">{{ tNearby }}</div>
+            <button onClick="{{ goSearch }}" style="border:none;background:none;color:#24A551;font-size:13px;font-weight:600;cursor:pointer">{{ tSeeAll }} ›</button>
+          </div>
+          <div style="display:flex;gap:14px;overflow-x:auto;padding:12px 20px 6px">
+            <sc-for list="{{ pitches }}" as="p" hint-placeholder-count="3">
+              <button onClick="{{ p.open }}" style="flex:none;width:236px;border:1px solid var(--ink08);border-radius:18px;background:var(--card);padding:0;cursor:pointer;text-align:left;overflow:hidden;box-shadow:0 1px 3px rgba(6,21,51,.05)">
+                <div style="position:relative;height:118px;background:{{ p.grad }};overflow:hidden"><image-slot id="{{ p.slot }}" src="{{ p.photo }}" shape="rect" placeholder="صورة الملعب · drop photo" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+                  <div style="position:absolute;top:9px;right:9px;background:rgba(3,8,20,.75);color:#FBFCFA;font-size:11px;font-weight:700;padding:5px 9px;border-radius:999px">★ {{ p.rating }}</div>
+                  <sc-if value="{{ p.now }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;bottom:9px;left:9px;background:#BDF961;color:#061533;font-size:10.5px;font-weight:700;padding:5px 9px;border-radius:999px">Available now</div></sc-if>
+                </div>
+                <div style="padding:12px 14px 14px">
+                  <div style="font-size:14.5px;font-weight:700">{{ p.name }}</div>
+                  <div style="margin-top:4px;font-size:12px;color:var(--ink55)">{{ p.areaLabel }} · {{ p.distLabel }}</div>
+                  <div style="margin-top:9px;display:flex;align-items:center;justify-content:space-between">
+                    <div style="font-size:13.5px;font-weight:700;color:#24A551">{{ p.priceStr }}<span style="color:var(--ink45);font-weight:500;font-size:11.5px">{{ tr.perHrShort }}</span></div>
+                    <div style="font-size:11px;font-weight:600;color:var(--ink5);background:var(--tint);padding:4px 8px;border-radius:6px">{{ p.tyLabel }}</div>
+                  </div>
+                </div>
+              </button>
+            </sc-for>
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 20px;margin-top:24px">
+            <div style="font-size:17px;font-weight:700">{{ tLooking }}</div>
+            <button onClick="{{ goDiscover }}" style="border:none;background:none;color:#24A551;font-size:13px;font-weight:600;cursor:pointer">{{ tSeeAll }} ›</button>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;padding:12px 20px 0">
+            <sc-for list="{{ homeMatches }}" as="m" hint-placeholder-count="2">
+              <div style="border:1px solid var(--ink08);border-radius:18px;background:var(--card);padding:15px 16px;box-shadow:0 1px 3px rgba(6,21,51,.05)">
+                <div style="display:flex;align-items:center;gap:11px">
+                  <div style="width:40px;height:40px;border-radius:50%;background:{{ m.avBg }};color:{{ m.avFg }};display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">{{ m.initial }}</div>
+                  <div style="flex:1">
+                    <div style="font-size:14.5px;font-weight:700">{{ m.needsLabel }}</div>
+                    <div style="font-size:12px;color:var(--ink55);margin-top:2px">{{ m.pitch }} · {{ m.day }} {{ m.time }}</div>
+                  </div>
+                  <div style="font-size:12px;font-weight:700;color:var(--ink);background:var(--tint);padding:5px 10px;border-radius:999px">{{ m.joined }}/{{ m.total }}</div>
+                </div>
+                <div style="margin-top:12px;height:6px;border-radius:99px;background:var(--tint);overflow:hidden"><div style="height:100%;width:{{ m.pct }};background:#24A551;border-radius:99px"></div></div>
+                <button onClick="{{ m.openDetails }}" style="margin-top:12px;width:100%;border:none;background:var(--navyBtn);color:#fff;font-size:13.5px;font-weight:600;padding:12px;border-radius:11px;cursor:pointer">{{ tr.joinMatch }}</button>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vSearch }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Search" style="min-height:100%;padding:62px 0 40px;background:var(--bg)">
+          <div style="display:flex;align-items:center;gap:10px;padding:0 20px">
+            <button onClick="{{ goHome }}" style="flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink12);background:var(--card);cursor:pointer;font-size:18px;color:var(--ink)">‹</button>
+            <div style="flex:1;display:flex;align-items:center;gap:9px;padding:11px 14px;border:1.5px solid #24A551;border-radius:13px;background:var(--card)">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--ink45)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5 21 21"></path></svg>
+              <input value="{{ q }}" onChange="{{ setQ }}" placeholder="Pitch name, area, facility..." style="flex:1;border:none;outline:none;font-size:14.5px;background:none">
+            </div>
+            <button onClick="{{ openSheet }}" style="flex:none;width:42px;height:42px;border-radius:13px;border:none;background:var(--navyBtn);cursor:pointer;display:flex;align-items:center;justify-content:center">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#BDF961" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"></path></svg>
+            </button>
+          </div>
+          <div style="display:flex;gap:8px;overflow-x:auto;padding:13px 20px 4px">
+            <sc-for list="{{ typeChips }}" as="t" hint-placeholder-count="5">
+              <button onClick="{{ t.pick }}" style="flex:none;border:1.5px solid {{ t.bd }};background:{{ t.bg }};color:{{ t.fg }};font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;cursor:pointer;animation:{{ t.anim }}">{{ t.label }}</button>
+            </sc-for>
+          </div>
+          <div style="padding:10px 20px 0;font-size:12.5px;color:var(--ink5)">{{ resultCount }} {{ tr.resultsMeta }}</div>
+          <div style="display:flex;flex-direction:column;gap:13px;padding:12px 20px 0">
+            <sc-for list="{{ results }}" as="p" hint-placeholder-count="4">
+              <button onClick="{{ p.open }}" style="display:flex;gap:13px;border:1px solid var(--ink08);border-radius:17px;background:var(--card);padding:11px;cursor:pointer;text-align:left;box-shadow:0 1px 3px rgba(6,21,51,.05)">
+                <div style="position:relative;flex:none;width:96px;height:96px;border-radius:12px;background:{{ p.grad }};overflow:hidden"><image-slot id="{{ p.slot }}" src="{{ p.photo }}" shape="rect" placeholder="صورة" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+                </div>
+                <div style="flex:1;min-width:0;padding:3px 0">
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+                    <div style="font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.name }}</div>
+                    <div style="flex:none;font-size:12px;font-weight:700">★ {{ p.rating }}</div>
+                  </div>
+                  <div style="margin-top:3px;font-size:12.5px;color:var(--ink55)">{{ p.areaLabel }} · {{ p.distLabel }}</div>
+                  <div style="margin-top:6px;display:flex;gap:6px">
+                    <div style="font-size:11px;font-weight:600;color:var(--ink55);background:var(--tint);padding:4px 8px;border-radius:6px">{{ p.tyLabel }}</div>
+                    <sc-if value="{{ p.now }}" hint-placeholder-val="{{ false }}"><div style="font-size:11px;font-weight:700;color:var(--limeChipFg);background:var(--limeChip);padding:4px 8px;border-radius:6px">Available now</div></sc-if>
+                  </div>
+                  <div style="margin-top:7px;font-size:14px;font-weight:700;color:#24A551">{{ p.priceStr }} <span style="color:var(--ink45);font-weight:500;font-size:11.5px">{{ tr.egphr }}</span></div>
+                </div>
+              </button>
+            </sc-for>
+          </div>
+          <sc-if value="{{ sheet }}" hint-placeholder-val="{{ false }}">
+            <div onClick="{{ closeSheet }}" style="position:absolute;inset:0;background:rgba(3,8,20,.55);z-index:50"></div>
+            <div style="position:absolute;left:0;right:0;bottom:0;background:var(--bg);border-radius:26px 26px 0 0;padding:14px 22px 30px;z-index:51;animation:ehUp .28s ease both">
+              <div style="width:40px;height:4px;border-radius:99px;background:var(--ink15);margin:0 auto 14px"></div>
+              <div style="display:flex;align-items:center;justify-content:space-between">
+                <div style="font-size:18px;font-weight:800">{{ tr.filters }}</div>
+                <button onClick="{{ closeSheet }}" style="border:none;background:none;color:var(--ink5);font-size:13px;font-weight:600;cursor:pointer">{{ tr.reset }}</button>
+              </div>
+              <div style="margin-top:16px;font-size:12.5px;font-weight:700;color:var(--ink6)">{{ tr.pricePerHr }}</div>
+              <div style="margin-top:8px;display:flex;gap:8px">
+                <sc-for list="{{ priceChips }}" as="c" hint-placeholder-count="3"><button onClick="{{ c.pick }}" style="border:1.5px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};font-size:13px;font-weight:600;padding:9px 14px;border-radius:999px;cursor:pointer">{{ c.label }}</button></sc-for>
+              </div>
+              <div style="margin-top:16px;font-size:12.5px;font-weight:700;color:var(--ink6)">{{ tr.pitchType }}</div>
+              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+                <sc-for list="{{ sheetTypes }}" as="c" hint-placeholder-count="4"><button onClick="{{ c.pick }}" style="border:1.5px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};font-size:13px;font-weight:600;padding:9px 14px;border-radius:999px;cursor:pointer">{{ c.label }}</button></sc-for>
+              </div>
+              <div style="margin-top:16px;font-size:12.5px;font-weight:700;color:var(--ink6)">{{ tr.distance }}</div>
+              <div style="margin-top:8px;display:flex;gap:8px">
+                <sc-for list="{{ distChips }}" as="c" hint-placeholder-count="3"><button onClick="{{ c.pick }}" style="border:1.5px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};font-size:13px;font-weight:600;padding:9px 14px;border-radius:999px;cursor:pointer">{{ c.label }}</button></sc-for>
+              </div>
+              <button onClick="{{ closeSheet }}" style="margin-top:22px;width:100%;border:none;background:#24A551;color:#fff;font-size:15px;font-weight:600;padding:15px;border-radius:14px;cursor:pointer">{{ tr.show }} {{ resultCount }} {{ tr.pitchesWord }}</button>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vPitch }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Pitch details" style="min-height:100%;background:var(--bg);padding:0 0 0">
+          <div style="position:relative;height:270px;background:{{ selGrad }};overflow:hidden"><image-slot id="{{ selSlot }}" src="{{ selPhoto }}" shape="rect" placeholder="صورة الملعب · drop photo" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+            <button onClick="{{ goSearch }}" style="position:absolute;top:58px;left:18px;width:38px;height:38px;border-radius:50%;border:none;background:var(--card);cursor:pointer;font-size:18px;color:var(--ink);display:flex;align-items:center;justify-content:center;line-height:1;box-shadow:0 1px 6px rgba(3,8,20,.25)">‹</button>
+            <div style="position:absolute;bottom:14px;right:16px;background:rgba(3,8,20,.75);color:#FBFCFA;font-size:11px;font-weight:600;padding:5px 10px;border-radius:999px">{{ tr.photos }}</div>
+          </div>
+          <div style="padding:18px 20px 120px">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px">
+              <div style="font-size:22px;font-weight:800;letter-spacing:-.01em">{{ selName }}</div>
+              <div style="flex:none;background:var(--tint);color:var(--ink);font-size:13px;font-weight:700;padding:6px 11px;border-radius:999px">★ {{ selRating }}</div>
+            </div>
+            <div style="margin-top:6px;font-size:13.5px;color:var(--ink6)">{{ selMeta }}</div>
+            <div style="margin-top:14px;display:flex;gap:8px">
+              <div style="font-size:12px;font-weight:700;color:var(--limeChipFg);background:var(--limeChip);padding:6px 11px;border-radius:8px">{{ selType }}</div>
+              <div style="font-size:12px;font-weight:600;color:var(--ink6);background:var(--tint);padding:6px 11px;border-radius:8px">{{ tr.turf }}</div>
+              <div style="font-size:12px;font-weight:600;color:var(--ink6);background:var(--tint);padding:6px 11px;border-radius:8px">{{ tr.floodlit }}</div>
+            </div>
+            <div style="margin-top:22px;font-size:15.5px;font-weight:700">{{ tr.facilitiesT }}</div>
+            <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ facilities }}" as="f" hint-placeholder-count="6"><div style="font-size:13px;font-weight:500;color:var(--ink);border:1.5px solid var(--ink1);padding:8px 13px;border-radius:999px;background:var(--card)">{{ f }}</div></sc-for>
+            </div>
+            <div style="margin-top:22px;display:flex;align-items:baseline;justify-content:space-between">
+              <div style="font-size:15.5px;font-weight:700">{{ tr.tonightSlots }}</div>
+              <div style="font-size:12px;color:var(--ink5)">{{ tr.fridayAug }}</div>
+            </div>
+            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+              <sc-for list="{{ previewSlots }}" as="s" hint-placeholder-count="5">
+                <div style="font-size:13px;font-weight:600;padding:9px 13px;border-radius:10px;border:1.5px solid {{ s.bd }};color:{{ s.fg }};background:{{ s.bg }};text-decoration:{{ s.deco }}">{{ s.label }}</div>
+              </sc-for>
+            </div>
+            <div style="margin-top:22px;font-size:15.5px;font-weight:700">{{ tr.reviews }}</div>
+            <div style="margin-top:10px;display:flex;flex-direction:column;gap:10px">
+              <div style="border:1px solid var(--ink08);border-radius:14px;background:var(--card);padding:13px 15px">
+                <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700">Karim S. <span style="color:#24A551">★★★★★</span></div>
+                <div style="margin-top:5px;font-size:13px;color:var(--ink65);line-height:1.5">{{ tr.rev1 }}</div>
+              </div>
+              <div style="border:1px solid var(--ink08);border-radius:14px;background:var(--card);padding:13px 15px">
+                <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700">Omar T. <span style="color:#24A551">★★★★☆</span></div>
+                <div style="margin-top:5px;font-size:13px;color:var(--ink65);line-height:1.5">{{ tr.rev2 }}</div>
+              </div>
+            </div>
+          </div>
+          <div style="position:sticky;bottom:0;display:flex;align-items:center;gap:14px;background:var(--bar);border-top:1px solid var(--ink08);padding:14px 20px 26px;backdrop-filter:blur(8px)">
+            <div>
+              <div style="font-size:19px;font-weight:800;color:var(--ink)">{{ selPriceStr }} <span style="font-size:12px;font-weight:500;color:var(--ink5)">{{ tr.egphr }}</span></div>
+              <div style="font-size:11.5px;color:#24A551;font-weight:600">{{ tr.freeCancel }}</div>
+            </div>
+            <button onClick="{{ goBooking }}" style="flex:1;border:none;background:#24A551;color:#fff;font-size:15.5px;font-weight:700;padding:16px;border-radius:14px;cursor:pointer" style-hover="background:#1e8f46">{{ tr.bookThis }}</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vBooking }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Booking — date, time, duration" style="min-height:100%;background:var(--bg);padding:62px 0 0;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:12px;padding:0 20px">
+            <button onClick="{{ goPitch }}" style="flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink12);background:var(--card);cursor:pointer;font-size:18px;color:var(--ink)">‹</button>
+            <div>
+              <div style="font-size:16.5px;font-weight:800">{{ selName }}</div>
+              <div style="font-size:12px;color:var(--ink55)">{{ selArea }} · {{ selPriceStr }} {{ tr.egphr }}</div>
+            </div>
+          </div>
+          <div style="flex:1;padding:6px 20px 130px">
+            <div style="margin-top:16px;display:flex;align-items:center;justify-content:space-between">
+              <div style="font-size:15px;font-weight:700">{{ tr.step1 }}</div>
+              <div style="display:flex;align-items:center;gap:6px">
+                <button onClick="{{ calPrev }}" style="width:30px;height:30px;border-radius:9px;border:1.5px solid var(--ink12);background:var(--card);color:{{ calPrevFg }};cursor:pointer;font-size:15px">‹</button>
+                <div style="font-size:13px;font-weight:700;min-width:112px;text-align:center">{{ calTitle }}</div>
+                <button onClick="{{ calNext }}" style="width:30px;height:30px;border-radius:9px;border:1.5px solid var(--ink12);background:var(--card);color:{{ calNextFg }};cursor:pointer;font-size:15px">›</button>
+              </div>
+            </div>
+            <div style="margin-top:10px;border:1px solid var(--ink08);border-radius:16px;background:var(--card);padding:12px 12px 14px">
+              <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px">
+                <sc-for list="{{ wdNames }}" as="w" hint-placeholder-count="7"><div style="text-align:center;font-size:10.5px;font-weight:700;color:var(--ink4);padding:4px 0">{{ w }}</div></sc-for>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-top:2px">
+                <sc-for list="{{ calCells }}" as="c" hint-placeholder-count="35">
+                  <button onClick="{{ c.pick }}" style="border:none;background:{{ c.bg }};color:{{ c.fg }};font-size:13px;font-weight:{{ c.fw }};padding:9px 0;border-radius:10px;cursor:{{ c.cur }};animation:{{ c.anim }}">{{ c.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            <div style="margin-top:20px;font-size:15px;font-weight:700">{{ tr.step2 }}</div>
+            <div style="margin-top:10px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+              <sc-for list="{{ slots }}" as="s" hint-placeholder-count="7">
+                <button onClick="{{ s.pick }}" disabled="{{ s.busy }}" style="padding:13px 0;border-radius:12px;border:1.5px solid {{ s.bd }};background:{{ s.bg }};color:{{ s.fg }};font-size:13.5px;font-weight:600;cursor:{{ s.cur }};text-decoration:{{ s.deco }};animation:{{ s.anim }}">{{ s.label }}</button>
+              </sc-for>
+            </div>
+            <div style="margin-top:20px;font-size:15px;font-weight:700">{{ tr.step3 }}</div>
+            <div style="margin-top:10px;display:flex;gap:8px">
+              <sc-for list="{{ durs }}" as="d" hint-placeholder-count="4">
+                <button onClick="{{ d.pick }}" style="flex:1;padding:13px 0;border-radius:12px;border:1.5px solid {{ d.bd }};background:{{ d.bg }};color:{{ d.fg }};font-size:13.5px;font-weight:700;cursor:pointer;animation:{{ d.anim }}">{{ d.label }}</button>
+              </sc-for>
+            </div>
+            <div style="margin-top:20px;border:1.5px solid {{ recurBd }};background:{{ recurBoxBg }};border-radius:16px;padding:14px 16px">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+                <div>
+                  <div style="font-size:14.5px;font-weight:800">{{ tr.repeatW }}</div>
+                  <div style="margin-top:3px;font-size:12px;color:var(--ink55)">{{ tr.repeatSub }}</div>
+                </div>
+                <button onClick="{{ toggleRecur }}" style="flex:none;width:46px;height:27px;border-radius:99px;border:none;background:{{ recurTgBg }};cursor:pointer;position:relative;transition:background .2s">
+                  <div style="position:absolute;top:3px;left:{{ recurKnob }};width:21px;height:21px;border-radius:50%;background:var(--card);box-shadow:0 1px 3px rgba(3,8,20,.25);transition:left .2s"></div>
+                </button>
+              </div>
+              <sc-if value="{{ recurOn }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:12px;display:flex;gap:7px;flex-wrap:wrap">
+                  <sc-for list="{{ recurDates }}" as="r" hint-placeholder-count="4"><div style="font-size:12px;font-weight:700;background:var(--card);border:1.5px solid rgba(36,165,81,.4);color:#24A551;padding:6px 11px;border-radius:999px">{{ r }}</div></sc-for>
+                </div>
+                <div style="margin-top:10px;font-size:12px;line-height:1.5;color:var(--ink65)">{{ tr.repeatNote }}</div>
+              </sc-if>
+            </div>
+            <sc-if value="{{ timePicked }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:18px;border:1.5px solid rgba(36,165,81,.35);background:var(--tint);border-radius:16px;padding:15px 17px;display:flex;align-items:center;justify-content:space-between">
+                <div>
+                  <div style="font-size:15.5px;font-weight:800">{{ rangeStr }}</div>
+                  <div style="margin-top:3px;font-size:12.5px;color:var(--ink6)">{{ dateStr }} · {{ durStr }}</div>
+                </div>
+                <div style="font-size:18px;font-weight:800;color:#24A551">{{ priceStr }} <span style="font-size:11px;color:var(--ink5);font-weight:600">EGP</span></div>
+              </div>
+            </sc-if>
+          </div>
+          <div style="position:sticky;bottom:0;background:var(--bar);border-top:1px solid var(--ink08);padding:14px 20px 26px;backdrop-filter:blur(8px)">
+            <button onClick="{{ goSummary }}" disabled="{{ noTime }}" style="width:100%;border:none;background:{{ contBg }};color:{{ contFg }};font-size:15.5px;font-weight:700;padding:16px;border-radius:14px;cursor:{{ contCur }}">{{ contLabel }}</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vSummary }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Booking summary" style="min-height:100%;background:var(--bg);padding:62px 20px 40px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:12px">
+            <button onClick="{{ goBooking }}" style="flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink12);background:var(--card);cursor:pointer;font-size:18px;color:var(--ink)">‹</button>
+            <div style="font-size:18px;font-weight:800">{{ tr.sumTitle }}</div>
+          </div>
+          <div style="margin-top:18px;border:1px solid var(--ink08);border-radius:18px;background:var(--card);overflow:hidden">
+            <div style="position:relative;height:86px;background:{{ selGrad }}">
+              <div style="position:absolute;inset:10px;border:1.5px solid rgba(251,252,250,.35);border-radius:8px"></div>
+              <div style="position:absolute;bottom:10px;left:14px;color:#FBFCFA;font-size:15px;font-weight:800;text-shadow:0 1px 6px rgba(3,8,20,.5)">{{ selName }}</div>
+            </div>
+            <div style="padding:15px 17px;display:flex;flex-direction:column;gap:11px">
+              <div style="display:flex;justify-content:space-between;font-size:13.5px"><span style="color:var(--ink55)">{{ tr.date }}</span><span style="font-weight:700">{{ dateStr }}</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:13.5px"><span style="color:var(--ink55)">{{ tr.time }}</span><span style="font-weight:700">{{ rangeStr }}</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:13.5px"><span style="color:var(--ink55)">{{ tr.duration }}</span><span style="font-weight:700">{{ durStr }}</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:13.5px"><span style="color:var(--ink55)">{{ tr.pitchType }}</span><span style="font-weight:700">{{ selType }}</span></div>
+              <sc-if value="{{ recurOn }}" hint-placeholder-val="{{ false }}"><div style="display:flex;justify-content:space-between;font-size:13.5px"><span style="color:var(--ink55)">{{ tr.schedule }}</span><span style="font-weight:700;color:#24A551">{{ tr.weekly4 }}</span></div></sc-if>
+              <div style="border-top:1px dashed var(--ink12);margin:2px 0"></div>
+              <div style="display:flex;justify-content:space-between;font-size:13.5px"><span style="color:var(--ink55)">{{ lineLabel }}</span><span style="font-weight:600">{{ priceStr }} {{ tr.egp }}</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:13.5px"><span style="color:var(--ink55)">{{ tr.fee }}</span><span style="font-weight:600">{{ feeStr }} {{ tr.egp }}</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:16px;font-weight:800"><span>{{ tr.total }}</span><span style="color:#24A551">{{ totalStr }} {{ tr.egp }}</span></div>
+              <sc-if value="{{ depMode }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;justify-content:space-between;font-size:12.5px"><span style="color:var(--ink55)">{{ tr.dueNow }}</span><span style="font-weight:800;color:#24A551">{{ depositStr }} {{ tr.egp }}</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:12.5px"><span style="color:var(--ink55)">{{ tr.atVenue }}</span><span style="font-weight:600">{{ remainStr }} {{ tr.egp }}</span></div>
+              </sc-if>
+            </div>
+          </div>
+          <div style="margin-top:18px;font-size:13px;font-weight:700;color:var(--ink6)">{{ tr.howMuch }}</div>
+          <div style="margin-top:9px;display:flex;flex-direction:column;gap:9px">
+            <sc-for list="{{ amtOpts }}" as="p" hint-placeholder-count="2">
+              <button onClick="{{ p.pick }}" style="display:flex;align-items:center;gap:12px;border:1.5px solid {{ p.bd }};background:{{ p.bg }};border-radius:14px;padding:14px 15px;cursor:pointer;text-align:left">
+                <div style="flex:none;width:19px;height:19px;border-radius:50%;border:2px solid {{ p.dotBd }};display:flex;align-items:center;justify-content:center"><div style="width:9px;height:9px;border-radius:50%;background:{{ p.dot }}"></div></div>
+                <div style="flex:1"><div style="font-size:14px;font-weight:700">{{ p.label }}</div><div style="font-size:12px;color:var(--ink55)">{{ p.sub }}</div></div>
+              </button>
+            </sc-for>
+          </div>
+          <div style="margin-top:16px;font-size:13px;font-weight:700;color:var(--ink6)">{{ tr.payWith }}</div>
+          <div style="margin-top:9px;display:flex;flex-direction:column;gap:9px">
+            <sc-for list="{{ payOpts }}" as="p" hint-placeholder-count="2">
+              <button onClick="{{ p.pick }}" style="display:flex;align-items:center;gap:12px;border:1.5px solid {{ p.bd }};background:{{ p.bg }};border-radius:14px;padding:14px 15px;cursor:pointer;text-align:left">
+                <div style="flex:none;width:19px;height:19px;border-radius:50%;border:2px solid {{ p.dotBd }};display:flex;align-items:center;justify-content:center"><div style="width:9px;height:9px;border-radius:50%;background:{{ p.dot }}"></div></div>
+                <div style="flex:1"><div style="font-size:14px;font-weight:700">{{ p.label }}</div><div style="font-size:12px;color:var(--ink55)">{{ p.sub }}</div></div>
+              </button>
+            </sc-for>
+          </div>
+          <div style="margin-top:14px;font-size:12px;color:var(--ink5);line-height:1.55">{{ tr.cancelNote }}</div>
+          <button onClick="{{ confirmBooking }}" style="margin-top:auto;border:none;background:#24A551;color:#fff;font-size:16px;font-weight:700;padding:17px;border-radius:14px;cursor:pointer;box-shadow:0 10px 24px rgba(36,165,81,.35)" style-hover="background:#1e8f46">{{ tr.confirmBk }} · {{ dueNowStr }} {{ tr.egp }}</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vConfirmed }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Booking confirmed" style="min-height:100%;background:var(--bg);display:flex;flex-direction:column;padding:90px 24px 40px">
+          <div style="align-self:center;width:92px;height:92px;border-radius:50%;background:#24A551;display:flex;align-items:center;justify-content:center;animation:ehPop .55s ease both;box-shadow:0 14px 34px rgba(36,165,81,.4)">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5 10 18 19.5 7"></path></svg>
+          </div>
+          <div style="margin-top:22px;text-align:center;font-size:25px;font-weight:800;letter-spacing:-.01em">{{ tr.confirmedT }}</div>
+          <sc-if value="{{ arab }}" hint-placeholder-val="{{ true }}"><div dir="rtl" style="margin-top:6px;text-align:center;font-family:'IBM Plex Sans Arabic';font-size:14px;color:#24A551">يلا، الملعب محجوز!</div></sc-if>
+          <div style="margin-top:20px;border:1px solid var(--ink08);border-radius:18px;background:var(--card);padding:17px 18px">
+            <div style="font-size:16.5px;font-weight:800">{{ selName }}</div>
+            <div style="margin-top:5px;font-size:13.5px;color:var(--ink6)">{{ dateStr }} · {{ rangeStr }} · {{ durStr }}</div>
+            <div style="margin-top:13px;display:flex;align-items:center;justify-content:space-between;background:var(--tint);border-radius:11px;padding:11px 14px">
+              <div style="font-size:12px;color:var(--ink55);font-weight:600">{{ tr.bookingId }}</div>
+              <div style="font-size:14px;font-weight:800;letter-spacing:.06em">EH-84213</div>
+            </div>
+          </div>
+          <div style="margin-top:18px;border:1.5px solid var(--limeBd);background:var(--limeTint);border-radius:16px;padding:14px 16px;display:flex;gap:12px;align-items:center">
+            <div style="flex:none;width:38px;height:38px;border-radius:50%;background:var(--navyBtn);color:#BDF961;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px">6/8</div>
+            <div style="font-size:13px;line-height:1.5;color:var(--ink)">{{ tr.missingP }}</div>
+          </div>
+          <button onClick="{{ goFindPlayers }}" style="margin-top:auto;border:none;background:var(--navyBtn);color:#fff;font-size:15.5px;font-weight:700;padding:16px;border-radius:14px;cursor:pointer">{{ tr.findPlayers }}</button>
+          <button onClick="{{ goBookingDetails }}" style="margin-top:10px;border:1.5px solid var(--ink14);background:var(--card);color:var(--ink);font-size:14.5px;font-weight:600;padding:14px;border-radius:14px;cursor:pointer">{{ tr.viewBooking }}</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vFindPlayers }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Find players — prompt" style="min-height:100%;background:var(--bg);display:flex;flex-direction:column;padding:62px 24px 40px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <button onClick="{{ goConfirmed }}" style="flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink12);background:var(--card);cursor:pointer;font-size:18px;color:var(--ink)">‹</button>
+            <div style="font-size:18px;font-weight:800">{{ tr.needPlayersT }}</div>
+          </div>
+          <div style="margin-top:10px;font-size:14px;color:var(--ink6);line-height:1.55">{{ tr.squadFor }} {{ selName }} · {{ dateStr }} · {{ startStr }}</div>
+          <div style="margin-top:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+            <sc-for list="{{ squad }}" as="s" hint-placeholder-count="8">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+                <div style="width:62px;height:62px;border-radius:50%;background:{{ s.bg }};color:{{ s.fg }};border:{{ s.bd }};display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800">{{ s.label }}</div>
+                <div style="font-size:11px;color:var(--ink55);font-weight:600">{{ s.name }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="margin-top:26px;border:1px solid var(--ink08);border-radius:16px;background:var(--card);padding:16px 17px;display:flex;align-items:center;justify-content:space-between">
+            <div><div style="font-size:14.5px;font-weight:800">{{ tr.sixOf8 }}</div><div style="margin-top:3px;font-size:12.5px;color:var(--ink55)">{{ tr.need2 }}</div></div>
+            <div style="width:52px;height:52px;border-radius:50%;background:conic-gradient(#24A551 270deg,var(--tint) 0);display:flex;align-items:center;justify-content:center"><div style="width:38px;height:38px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800">75%</div></div>
+          </div>
+          <button onClick="{{ goCreateMatch }}" style="margin-top:auto;border:none;background:#24A551;color:#fff;font-size:15.5px;font-weight:700;padding:16px;border-radius:14px;cursor:pointer" style-hover="background:#1e8f46">{{ tr.findPlayers }}</button>
+          <button onClick="{{ goHome }}" style="margin-top:10px;border:none;background:none;color:var(--ink55);font-size:14px;font-weight:600;padding:12px;cursor:pointer">{{ tr.skipFull }}</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vCreateMatch }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Create match" style="min-height:100%;background:var(--bg);display:flex;flex-direction:column;padding:62px 24px 40px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <button onClick="{{ goFindPlayers }}" style="flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink12);background:var(--card);cursor:pointer;font-size:18px;color:var(--ink)">‹</button>
+            <div style="font-size:18px;font-weight:800">{{ tr.createMatch }}</div>
+          </div>
+          <div style="margin-top:16px;border:1px solid var(--ink08);border-radius:14px;background:var(--tint);padding:13px 15px;font-size:13px;line-height:1.5"><b>{{ selName }}</b> · {{ dateStr }} · {{ rangeStr }}</div>
+          <div style="margin-top:20px;font-size:13px;font-weight:700;color:var(--ink65)">{{ tr.playersNeeded }}</div>
+          <div style="margin-top:9px;display:flex;gap:8px">
+            <sc-for list="{{ needOpts }}" as="n" hint-placeholder-count="5">
+              <button onClick="{{ n.pick }}" style="flex:1;padding:13px 0;border-radius:12px;border:1.5px solid {{ n.bd }};background:{{ n.bg }};color:{{ n.fg }};font-size:15px;font-weight:800;cursor:pointer;animation:{{ n.anim }}">{{ n.label }}</button>
+            </sc-for>
+          </div>
+          <div style="margin-top:20px;font-size:13px;font-weight:700;color:var(--ink65)">{{ tr.skill }}</div>
+          <div style="margin-top:9px;display:flex;gap:8px;flex-wrap:wrap">
+            <sc-for list="{{ lvlOpts }}" as="l" hint-placeholder-count="4">
+              <button onClick="{{ l.pick }}" style="border:1.5px solid {{ l.bd }};background:{{ l.bg }};color:{{ l.fg }};font-size:13.5px;font-weight:600;padding:10px 16px;border-radius:999px;cursor:pointer;animation:{{ l.anim }}">{{ l.label }}</button>
+            </sc-for>
+          </div>
+          <div style="margin-top:20px;font-size:13px;font-weight:700;color:var(--ink65)">{{ tr.desc }} <span style="font-weight:500;color:var(--ink4)">{{ tr.optional }}</span></div>
+          <textarea placeholder="{{ tr.descPh }}" style="margin-top:9px;padding:13px 15px;border:1.5px solid var(--ink14);border-radius:13px;font-size:14px;background:var(--card);outline:none;resize:none;height:76px;line-height:1.5" style-focus="border-color:#24A551"></textarea>
+          <div style="margin-top:20px;font-size:13px;font-weight:700;color:var(--ink65)">{{ tr.whoJoin }}</div>
+          <div style="margin-top:9px;display:flex;background:var(--tint);border-radius:13px;padding:4px;gap:4px">
+            <sc-for list="{{ privOpts }}" as="p" hint-placeholder-count="2">
+              <button onClick="{{ p.pick }}" style="flex:1;border:none;background:{{ p.bg }};color:{{ p.fg }};font-size:13px;font-weight:600;padding:11px 0;border-radius:10px;cursor:pointer;box-shadow:{{ p.sh }}">{{ p.label }}</button>
+            </sc-for>
+          </div>
+          <button onClick="{{ postMatch }}" style="margin-top:auto;border:none;background:#24A551;color:#fff;font-size:15.5px;font-weight:700;padding:16px;border-radius:14px;cursor:pointer" style-hover="background:#1e8f46">{{ tr.postMatch }} {{ needStr }}</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vDiscover }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Match discovery" style="min-height:100%;background:var(--bg);padding:62px 0 110px">
+          <div style="padding:0 20px">
+            <div style="font-size:23px;font-weight:800;letter-spacing:-.01em">{{ tFindTitle }}</div>
+            <div style="margin-top:5px;font-size:13.5px;color:var(--ink6)">{{ tFindSub }}</div>
+          </div>
+          <sc-if value="{{ posted }}" hint-placeholder-val="{{ false }}">
+            <div style="margin:14px 20px 0;border:1.5px solid var(--limeBd);background:var(--limeTint);border-radius:16px;padding:13px 16px;display:flex;align-items:center;gap:11px">
+              <div style="flex:none;width:9px;height:9px;border-radius:50%;background:#24A551;animation:ehPulse 1.4s infinite"></div>
+              <div style="flex:1;font-size:13px;line-height:1.45"><b>{{ tr.matchLive }}</b> {{ selName }} · {{ tr.needsWord }} {{ needStr }}.</div>
+              <button onClick="{{ goMyMatches }}" style="border:none;background:var(--navyBtn);color:#fff;font-size:12px;font-weight:700;padding:8px 12px;border-radius:9px;cursor:pointer">{{ tr.manage }}</button>
+            </div>
+          </sc-if>
+          <div style="display:flex;gap:8px;overflow-x:auto;padding:14px 20px 4px">
+            <sc-for list="{{ findChips }}" as="c" hint-placeholder-count="4">
+              <button onClick="{{ c.pick }}" style="flex:none;border:1.5px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;cursor:pointer;animation:{{ c.anim }}">{{ c.label }}</button>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:13px;padding:12px 20px 0">
+            <sc-for list="{{ matches }}" as="m" hint-placeholder-count="3">
+              <div style="border:1px solid var(--ink08);border-radius:18px;background:var(--card);padding:15px 16px;box-shadow:0 1px 3px rgba(6,21,51,.05)">
+                <div onClick="{{ m.openDetails }}" style="display:flex;align-items:center;gap:11px;cursor:pointer">
+                  <div style="width:44px;height:44px;border-radius:50%;background:{{ m.avBg }};color:{{ m.avFg }};display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700">{{ m.initial }}</div>
+                  <div style="flex:1;min-width:0">
+                    <div style="font-size:15px;font-weight:700">{{ m.org }}</div>
+                    <div style="margin-top:2px;font-size:12.5px;color:var(--ink55)">{{ m.pitch }} · {{ m.areaLabel }}</div>
+                  </div>
+                  <div style="flex:none;font-size:11.5px;font-weight:700;color:var(--ink6);background:var(--tint);padding:5px 10px;border-radius:999px">{{ m.level }}</div>
+                </div>
+                <div style="margin-top:12px;display:flex;gap:14px;font-size:12.5px;color:var(--ink6)">
+                  <span><b style="color:var(--ink)">{{ m.day }}</b> · {{ m.time }}</span><span>{{ m.dur }}</span><span style="margin-left:auto;font-weight:700;color:var(--ink)">{{ m.joined }}/{{ m.total }} {{ tr.playersWord }}</span>
+                </div>
+                <div style="margin-top:9px;height:6px;border-radius:99px;background:var(--tint);overflow:hidden"><div style="height:100%;width:{{ m.pct }};background:#24A551;border-radius:99px"></div></div>
+                <div style="margin-top:12px;display:flex;gap:9px">
+                  <button onClick="{{ m.openDetails }}" style="flex:1;border:1.5px solid var(--ink14);background:var(--card);color:var(--ink);font-size:13px;font-weight:600;padding:11px;border-radius:11px;cursor:pointer">{{ tr.details }}</button>
+                  <button onClick="{{ m.join }}" style="flex:1.4;border:none;background:{{ m.joinBg }};color:{{ m.joinFg }};font-size:13px;font-weight:700;padding:11px;border-radius:11px;cursor:pointer">{{ m.joinLabel }}</button>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vMatchDetails }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Match details" style="min-height:100%;background:var(--bg);display:flex;flex-direction:column;padding:62px 0 40px">
+          <div style="display:flex;align-items:center;gap:12px;padding:0 20px">
+            <button onClick="{{ goDiscover }}" style="flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink12);background:var(--card);cursor:pointer;font-size:18px;color:var(--ink)">‹</button>
+            <div style="font-size:18px;font-weight:800">{{ tr.matchDetails }}</div>
+          </div>
+          <div style="flex:1;padding:16px 20px 0">
+            <div style="border:1px solid var(--ink08);border-radius:18px;background:var(--card);overflow:hidden">
+              <div style="position:relative;height:96px;background:{{ mGrad }}">
+                <div style="position:absolute;inset:10px;border:1.5px solid rgba(251,252,250,.35);border-radius:8px"></div>
+                <div style="position:absolute;bottom:10px;left:14px;color:#FBFCFA;font-size:16px;font-weight:800;text-shadow:0 1px 6px rgba(3,8,20,.5)">{{ mPitch }}</div>
+              </div>
+              <div style="padding:14px 16px;display:flex;gap:16px;font-size:13px">
+                <div><div style="color:var(--ink5);font-size:11.5px;font-weight:600">{{ tr.date }}</div><div style="font-weight:800;margin-top:2px">{{ mDay }}</div></div>
+                <div><div style="color:var(--ink5);font-size:11.5px;font-weight:600">{{ tr.kickoff }}</div><div style="font-weight:800;margin-top:2px">{{ mTime }}</div></div>
+                <div><div style="color:var(--ink5);font-size:11.5px;font-weight:600">{{ tr.duration }}</div><div style="font-weight:800;margin-top:2px">{{ mDur }}</div></div>
+                <div style="margin-left:auto"><div style="color:var(--ink5);font-size:11.5px;font-weight:600">{{ tr.level }}</div><div style="font-weight:800;margin-top:2px;color:#24A551">{{ mLevel }}</div></div>
+              </div>
+            </div>
+            <button onClick="{{ goPlayerProfile }}" style="margin-top:14px;width:100%;display:flex;align-items:center;gap:12px;border:1px solid var(--ink08);border-radius:16px;background:var(--card);padding:13px 15px;cursor:pointer;text-align:left">
+              <div style="width:42px;height:42px;border-radius:50%;background:{{ mAvBg }};color:{{ mAvFg }};display:flex;align-items:center;justify-content:center;font-weight:700">{{ mInitial }}</div>
+              <div style="flex:1"><div style="font-size:14.5px;font-weight:700">{{ mOrg }}</div><div style="font-size:12px;color:var(--ink55)">{{ tr.orgMeta }}</div></div>
+              <div style="color:var(--ink35);font-size:17px">›</div>
+            </button>
+            <div style="margin-top:18px;display:flex;align-items:baseline;justify-content:space-between">
+              <div style="font-size:15px;font-weight:700">{{ tr.playersT }} · {{ mJoined }}/{{ mTotal }}</div>
+              <div style="font-size:12.5px;color:#24A551;font-weight:700">{{ mNeeded }} {{ tr.spotsLeft }}</div>
+            </div>
+            <div style="margin-top:11px;display:grid;grid-template-columns:repeat(5,1fr);gap:10px">
+              <sc-for list="{{ mSlots }}" as="s" hint-placeholder-count="8">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:5px">
+                  <div style="width:50px;height:50px;border-radius:50%;background:{{ s.bg }};color:{{ s.fg }};border:{{ s.bd }};display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800">{{ s.label }}</div>
+                  <div style="font-size:10.5px;color:var(--ink55);font-weight:600">{{ s.name }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="margin-top:18px;font-size:15px;font-weight:700">{{ tr.aboutMatch }}</div>
+            <div style="margin-top:7px;font-size:13.5px;line-height:1.6;color:var(--ink7)">{{ mDesc }}</div>
+            <div style="margin-top:12px;border:1px solid var(--ink08);border-radius:13px;background:var(--tint);padding:12px 14px;font-size:12.5px;line-height:1.55;color:var(--ink75)">{{ tr.matchTips }}</div>
+          </div>
+          <div style="position:sticky;bottom:0;background:var(--bar);border-top:1px solid var(--ink08);padding:14px 20px 26px;backdrop-filter:blur(8px)">
+            <button onClick="{{ mJoinAction }}" style="width:100%;border:none;background:{{ mJoinBg }};color:{{ mJoinFg }};font-size:15.5px;font-weight:700;padding:16px;border-radius:14px;cursor:pointer">{{ mJoinLabel }}</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vPlayerProfile }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Player profile" style="min-height:100%;background:var(--bg);padding:62px 20px 40px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <button onClick="{{ goMatchDetails }}" style="flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink12);background:var(--card);cursor:pointer;font-size:18px;color:var(--ink)">‹</button>
+            <div style="font-size:18px;font-weight:800">{{ tr.playerT }}</div>
+          </div>
+          <div style="margin-top:20px;display:flex;flex-direction:column;align-items:center">
+            <div style="width:92px;height:92px;border-radius:50%;background:var(--navyBtn);color:#BDF961;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;border:3px solid #24A551">{{ mInitial }}</div>
+            <div style="margin-top:12px;font-size:21px;font-weight:800">{{ mOrg }}</div>
+            <div style="margin-top:3px;font-size:13px;color:var(--ink55)">{{ tr.playerMeta }}</div>
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <div style="font-size:12.5px;font-weight:700;background:var(--tint);padding:7px 13px;border-radius:999px">{{ tr.midfielder }}</div>
+              <div style="font-size:12.5px;font-weight:700;background:var(--limeChip);color:var(--limeChipFg);padding:7px 13px;border-radius:999px">{{ tr.intermediate }}</div>
+            </div>
+          </div>
+          <div style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+            <div style="border:1px solid var(--ink08);border-radius:15px;background:var(--card);padding:14px 0;text-align:center"><div style="font-size:20px;font-weight:800">42</div><div style="margin-top:2px;font-size:11.5px;color:var(--ink55);font-weight:600">{{ tr.matchesW }}</div></div>
+            <div style="border:1px solid var(--ink08);border-radius:15px;background:var(--card);padding:14px 0;text-align:center"><div style="font-size:20px;font-weight:800;color:#24A551">★ 4.8</div><div style="margin-top:2px;font-size:11.5px;color:var(--ink55);font-weight:600">{{ tr.rating }}</div></div>
+            <div style="border:1px solid var(--ink08);border-radius:15px;background:var(--card);padding:14px 0;text-align:center"><div style="font-size:20px;font-weight:800">12</div><div style="margin-top:2px;font-size:11.5px;color:var(--ink55);font-weight:600">{{ tr.hosted }}</div></div>
+          </div>
+          <div style="margin-top:20px;font-size:15px;font-weight:700">{{ tr.about }}</div>
+          <div style="margin-top:7px;font-size:13.5px;line-height:1.6;color:var(--ink7)">{{ tr.playerBio }}</div>
+          <div style="margin-top:18px;font-size:15px;font-weight:700">{{ tr.usually }}</div>
+          <div style="margin-top:9px;display:flex;gap:8px;flex-wrap:wrap">
+            <div style="font-size:12.5px;font-weight:600;border:1.5px solid var(--ink12);padding:8px 13px;border-radius:999px;background:var(--card)">{{ tr.weeknights }}</div>
+            <div style="font-size:12.5px;font-weight:600;border:1.5px solid var(--ink12);padding:8px 13px;border-radius:999px;background:var(--card)">{{ tr.fridays }}</div>
+          </div>
+          <div style="margin-top:18px;font-size:15px;font-weight:700">{{ tr.reviews }}</div>
+          <div style="margin-top:9px;border:1px solid var(--ink08);border-radius:14px;background:var(--card);padding:13px 15px">
+            <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700">Karim S. <span style="color:#24A551">★★★★★</span></div>
+            <div style="margin-top:5px;font-size:13px;color:var(--ink65);line-height:1.5">{{ tr.rev3 }}</div>
+          </div>
+          <button onClick="{{ goChat }}" style="margin-top:22px;width:100%;border:none;background:#24A551;color:#fff;font-size:15px;font-weight:700;padding:15px;border-radius:14px;cursor:pointer">{{ tr.message }}</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vChat }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Match chat" style="height:100%;background:var(--bg);display:flex;flex-direction:column;padding:58px 0 0">
+          <div style="display:flex;align-items:center;gap:11px;padding:6px 16px 12px;border-bottom:1px solid var(--ink08);background:var(--bg)">
+            <button onClick="{{ goMatchDetails }}" style="flex:none;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--ink12);background:var(--card);cursor:pointer;font-size:17px;color:var(--ink)">‹</button>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:14.5px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ tr.chatTitle }}</div>
+              <div style="font-size:11.5px;color:#24A551;font-weight:600">{{ tr.chatSub }}</div>
+            </div>
+            <div style="display:flex">
+              <div style="width:30px;height:30px;border-radius:50%;background:var(--navyBtn);color:#BDF961;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;border:2px solid #FBFCFA">A</div>
+              <div style="width:30px;height:30px;border-radius:50%;background:var(--tint);color:#24A551;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;border:2px solid #FBFCFA;margin-left:-8px">O</div>
+              <div style="width:30px;height:30px;border-radius:50%;background:#24A551;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;border:2px solid #FBFCFA;margin-left:-8px">+5</div>
+            </div>
+          </div>
+          <div ref="{{ chatRef }}" style="flex:1;overflow-y:auto;padding:16px 16px 8px;display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ msgs }}" as="m" hint-placeholder-count="5">
+              <sc-if value="{{ m.system }}" hint-placeholder-val="{{ false }}">
+                <div style="align-self:center;font-size:11.5px;font-weight:600;color:var(--ink5);background:var(--tint);padding:6px 13px;border-radius:999px;animation:ehMsgIn .3s cubic-bezier(.16,1,.3,1) both">{{ m.text }}</div>
+              </sc-if>
+              <sc-if value="{{ m.other }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;gap:8px;align-items:flex-end;max-width:82%;animation:ehMsgIn .3s cubic-bezier(.16,1,.3,1) both">
+                  <div style="flex:none;width:28px;height:28px;border-radius:50%;background:{{ m.avBg }};color:{{ m.avFg }};display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700">{{ m.initial }}</div>
+                  <div>
+                    <div style="font-size:10.5px;font-weight:700;color:var(--ink5);margin:0 0 3px 4px">{{ m.who }}</div>
+                    <div style="background:var(--card);border:1px solid var(--ink08);border-radius:16px 16px 16px 5px;padding:10px 13px;font-size:13.5px;line-height:1.45">{{ m.text }}</div>
+                  </div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ m.mine }}" hint-placeholder-val="{{ false }}">
+                <div style="align-self:flex-end;max-width:82%;background:var(--navyBtn);color:#FBFCFA;border-radius:16px 16px 5px 16px;padding:10px 13px;font-size:13.5px;line-height:1.45;animation:ehMsgIn .3s cubic-bezier(.16,1,.3,1) both">{{ m.text }}</div>
+              </sc-if>
+            </sc-for>
+          </div>
+          <div style="display:flex;gap:8px;padding:6px 16px 4px">
+            <button onClick="{{ quick1 }}" style="border:1.5px solid var(--ink12);background:var(--card);color:var(--ink);font-size:12px;font-weight:600;padding:8px 12px;border-radius:999px;cursor:pointer">{{ tr.onWay }}</button>
+            <button onClick="{{ quick2 }}" style="border:1.5px solid var(--ink12);background:var(--card);color:var(--ink);font-size:12px;font-weight:600;padding:8px 12px;border-radius:999px;cursor:pointer">{{ tr.arrived }}</button>
+            <button onClick="{{ quick3 }}" style="border:1.5px solid var(--ink12);background:var(--card);color:var(--ink);font-size:12px;font-weight:600;padding:8px 12px;border-radius:999px;cursor:pointer">{{ tr.sharePin }}</button>
+          </div>
+          <div style="display:flex;gap:9px;align-items:center;padding:8px 16px 26px;background:var(--bg)">
+            <input value="{{ draft }}" onChange="{{ setDraft }}" onKeyDown="{{ draftKey }}" placeholder="{{ tr.msgPh }}" style="flex:1;padding:13px 16px;border:1.5px solid var(--ink14);border-radius:999px;font-size:14px;background:var(--card);outline:none" style-focus="border-color:#24A551">
+            <button onClick="{{ send }}" style="flex:none;width:46px;height:46px;border-radius:50%;border:none;background:#24A551;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#1e8f46">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h14M13 6l6 6-6 6"></path></svg>
+            </button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vBookings }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="My bookings" style="min-height:100%;background:var(--bg);padding:62px 20px 110px">
+          <div style="font-size:23px;font-weight:800;letter-spacing:-.01em">{{ tBookTitle }}</div>
+          <div style="margin-top:14px;display:flex;background:var(--tint);border-radius:13px;padding:4px;gap:4px">
+            <sc-for list="{{ bookTabs }}" as="t" hint-placeholder-count="3">
+              <button onClick="{{ t.pick }}" style="flex:1;border:none;background:{{ t.bg }};color:{{ t.fg }};font-size:13px;font-weight:600;padding:10px 0;border-radius:10px;cursor:pointer;box-shadow:{{ t.sh }}">{{ t.label }}</button>
+            </sc-for>
+          </div>
+          <div style="margin-top:16px;display:flex;flex-direction:column;gap:13px">
+            <sc-for list="{{ bookingsList }}" as="b" hint-placeholder-count="2">
+              <div style="border:1px solid var(--ink08);border-radius:17px;background:var(--card);padding:15px 16px;box-shadow:0 1px 3px rgba(6,21,51,.05)">
+                <div style="display:flex;align-items:center;justify-content:space-between">
+                  <div style="font-size:15px;font-weight:700">{{ b.pitch }}</div>
+                  <div style="font-size:11px;font-weight:700;color:{{ b.stFg }};background:{{ b.stBg }};padding:5px 10px;border-radius:999px">{{ b.status }}</div>
+                </div>
+                <div style="margin-top:5px;font-size:12.5px;color:var(--ink55)">{{ b.date }} · {{ b.time }} · {{ b.dur }}</div>
+                <div style="margin-top:10px;display:flex;align-items:center;justify-content:space-between">
+                  <div style="font-size:14px;font-weight:800;color:var(--ink)">{{ b.price }} {{ tr.egp }}</div>
+                  <div style="display:flex;gap:8px">
+                    <sc-if value="{{ b.upcoming }}" hint-placeholder-val="{{ false }}">
+                      <button onClick="{{ goCreateMatch }}" style="border:1.5px solid var(--ink14);background:var(--card);color:var(--ink);font-size:12px;font-weight:700;padding:9px 13px;border-radius:10px;cursor:pointer">{{ tr.findPlayers }}</button>
+                      <button onClick="{{ goBookingDetails }}" style="border:none;background:var(--navyBtn);color:#fff;font-size:12px;font-weight:700;padding:9px 13px;border-radius:10px;cursor:pointer">{{ tr.view }}</button>
+                    </sc-if>
+                    <sc-if value="{{ b.completed }}" hint-placeholder-val="{{ false }}"><button onClick="{{ goBooking }}" style="border:none;background:var(--tint);color:var(--ink);font-size:12px;font-weight:700;padding:9px 13px;border-radius:10px;cursor:pointer">{{ tr.bookAgain }}</button></sc-if>
+                    <sc-if value="{{ b.cancelled }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:var(--ink5);font-weight:600;padding:9px 0">{{ tr.refunded }}</div></sc-if>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+            <sc-if value="{{ bookingsEmpty }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:30px;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 24px">
+                <div style="width:74px;height:74px;border-radius:50%;background:var(--tint);display:flex;align-items:center;justify-content:center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#24A551" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="17" rx="3"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg></div>
+                <div style="margin-top:14px;font-size:16px;font-weight:800">{{ tr.emptyBk }}</div>
+                <div style="margin-top:6px;font-size:13px;color:var(--ink55);line-height:1.5">{{ tr.emptyBkSub }}</div>
+                <button onClick="{{ goBooking }}" style="margin-top:16px;border:none;background:#24A551;color:#fff;font-size:14px;font-weight:700;padding:13px 24px;border-radius:13px;cursor:pointer">{{ tr.bookPitchBtn }}</button>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vBookingDetails }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Booking details" style="min-height:100%;background:var(--bg);display:flex;flex-direction:column;padding:62px 20px 40px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <button onClick="{{ goBookings }}" style="flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink12);background:var(--card);cursor:pointer;font-size:18px;color:var(--ink)">‹</button>
+            <div style="font-size:18px;font-weight:800">{{ tr.bkDetails }}</div>
+          </div>
+          <div style="margin-top:16px;border:1px solid var(--ink08);border-radius:18px;background:var(--card);overflow:hidden">
+            <div style="position:relative;height:110px;background:{{ selGrad }}">
+              <div style="position:absolute;inset:12px;border:1.5px solid rgba(251,252,250,.35);border-radius:8px"></div>
+              <div style="position:absolute;top:50%;left:50%;width:40px;height:40px;border:1.5px solid rgba(251,252,250,.4);border-radius:50%;transform:translate(-50%,-50%)"></div>
+              <div style="position:absolute;bottom:11px;left:15px;color:#FBFCFA;font-size:16px;font-weight:800;text-shadow:0 1px 6px rgba(3,8,20,.5)">{{ selName }}</div>
+              <div style="position:absolute;top:11px;right:11px;background:#BDF961;color:#061533;font-size:10.5px;font-weight:800;padding:5px 10px;border-radius:999px">{{ tr.confirmedChip }}</div>
+            </div>
+            <div style="padding:15px 17px;display:flex;flex-direction:column;gap:11px;font-size:13.5px">
+              <div style="display:flex;justify-content:space-between"><span style="color:var(--ink55)">{{ tr.bookingId }}</span><span style="font-weight:800;letter-spacing:.05em">EH-84213</span></div>
+              <div style="display:flex;justify-content:space-between"><span style="color:var(--ink55)">{{ tr.date }}</span><span style="font-weight:700">{{ dateStr }}</span></div>
+              <div style="display:flex;justify-content:space-between"><span style="color:var(--ink55)">{{ tr.time }}</span><span style="font-weight:700">{{ rangeStr }}</span></div>
+              <div style="display:flex;justify-content:space-between"><span style="color:var(--ink55)">{{ tr.duration }}</span><span style="font-weight:700">{{ durStr }}</span></div>
+              <sc-if value="{{ recurOn }}" hint-placeholder-val="{{ false }}"><div style="display:flex;justify-content:space-between"><span style="color:var(--ink55)">{{ tr.schedule }}</span><span style="font-weight:700;color:#24A551">{{ tr.weekly4 }}</span></div></sc-if>
+              <div style="display:flex;justify-content:space-between"><span style="color:var(--ink55)">{{ tr.payment }}</span><span style="font-weight:700">{{ payLabel }}</span></div>
+              <div style="border-top:1px dashed var(--ink12)"></div>
+              <div style="display:flex;justify-content:space-between;font-size:15px;font-weight:800"><span>{{ tr.total }}</span><span style="color:#24A551">{{ totalStr }} {{ tr.egp }}</span></div>
+            </div>
+          </div>
+          <div style="margin-top:14px;border:1px solid var(--ink08);border-radius:14px;background:var(--tint);padding:12px 15px;font-size:12.5px;line-height:1.55;color:var(--ink75)">{{ tr.gateNote }}</div>
+          <button onClick="{{ goCreateMatch }}" style="margin-top:auto;border:none;background:#24A551;color:#fff;font-size:15px;font-weight:700;padding:15px;border-radius:14px;cursor:pointer">{{ tr.findForMatch }}</button>
+          <button style="margin-top:10px;border:1.5px solid rgba(214,69,69,.35);background:var(--card);color:#d64545;font-size:14px;font-weight:600;padding:13px;border-radius:14px;cursor:pointer">{{ tr.cancelBk }}</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vMyMatches }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="My matches" style="min-height:100%;background:var(--bg);padding:62px 20px 110px">
+          <div style="font-size:23px;font-weight:800;letter-spacing:-.01em">{{ tMatchTitle }}</div>
+          <div style="margin-top:14px;display:flex;background:var(--tint);border-radius:13px;padding:4px;gap:4px">
+            <sc-for list="{{ matchTabs }}" as="t" hint-placeholder-count="3">
+              <button onClick="{{ t.pick }}" style="flex:1;border:none;background:{{ t.bg }};color:{{ t.fg }};font-size:13px;font-weight:600;padding:10px 0;border-radius:10px;cursor:pointer;box-shadow:{{ t.sh }}">{{ t.label }}</button>
+            </sc-for>
+          </div>
+          <sc-if value="{{ mtHosting }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top:16px;border:1.5px solid var(--limeBd);border-radius:18px;background:var(--card);padding:16px 17px;box-shadow:0 1px 3px rgba(6,21,51,.05)">
+              <div style="display:flex;align-items:center;justify-content:space-between">
+                <div style="font-size:15px;font-weight:800">Dream Sports Arena</div>
+                <div style="font-size:10.5px;font-weight:800;color:var(--limeChipFg);background:var(--limeChip);padding:5px 10px;border-radius:999px">{{ tr.hosting }}</div>
+              </div>
+              <div style="margin-top:5px;font-size:12.5px;color:var(--ink55)">{{ tr.mm1 }}</div>
+              <div style="margin-top:13px;display:flex;align-items:center;gap:12px">
+                <div style="flex:1;height:7px;border-radius:99px;background:var(--tint);overflow:hidden"><div style="height:100%;width:87.5%;background:#24A551;border-radius:99px"></div></div>
+                <div style="font-size:13px;font-weight:800">7/8</div>
+              </div>
+              <div style="margin-top:5px;font-size:12.5px;color:#24A551;font-weight:700">{{ tr.mm2 }}</div>
+              <div style="margin-top:13px;display:flex;gap:9px">
+                <button onClick="{{ goChat }}" style="flex:1;border:1.5px solid var(--ink14);background:var(--card);color:var(--ink);font-size:13px;font-weight:600;padding:11px;border-radius:11px;cursor:pointer">{{ tr.squadChat }}</button>
+                <button onClick="{{ goMatchDetails }}" style="flex:1.4;border:none;background:var(--navyBtn);color:#fff;font-size:13px;font-weight:700;padding:11px;border-radius:11px;cursor:pointer">{{ tr.openMatch }}</button>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ mtJoined }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:16px;border:1px solid var(--ink08);border-radius:18px;background:var(--card);padding:16px 17px">
+              <div style="display:flex;align-items:center;justify-content:space-between">
+                <div style="font-size:15px;font-weight:800">Green Field Club</div>
+                <div style="font-size:10.5px;font-weight:800;color:#24A551;background:var(--tint);padding:5px 10px;border-radius:999px">{{ tr.joinedChip }}</div>
+              </div>
+              <div style="margin-top:5px;font-size:12.5px;color:var(--ink55)">{{ tr.mm3 }}</div>
+              <div style="margin-top:13px;display:flex;gap:9px">
+                <button onClick="{{ goChat }}" style="flex:1;border:none;background:var(--navyBtn);color:#fff;font-size:13px;font-weight:700;padding:11px;border-radius:11px;cursor:pointer">{{ tr.squadChat }}</button>
+                <button style="flex:1;border:1.5px solid rgba(214,69,69,.3);background:var(--card);color:#d64545;font-size:13px;font-weight:600;padding:11px;border-radius:11px;cursor:pointer">{{ tr.leave }}</button>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ mtCompleted }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:16px;border:1px solid var(--ink08);border-radius:18px;background:var(--card);padding:16px 17px">
+              <div style="display:flex;align-items:center;justify-content:space-between">
+                <div style="font-size:15px;font-weight:800">Champions Park</div>
+                <div style="font-size:10.5px;font-weight:700;color:var(--ink55);background:var(--tint);padding:5px 10px;border-radius:999px">{{ tr.played }}</div>
+              </div>
+              <div style="margin-top:5px;font-size:12.5px;color:var(--ink55)">{{ tr.mm4 }}</div>
+              <button style="margin-top:13px;width:100%;border:1.5px solid var(--ink14);background:var(--card);color:var(--ink);font-size:13px;font-weight:600;padding:11px;border-radius:11px;cursor:pointer">{{ tr.rate }}</button>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vNotifications }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Notifications" style="min-height:100%;background:var(--bg);padding:62px 20px 40px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <button onClick="{{ goHome }}" style="flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink12);background:var(--card);cursor:pointer;font-size:18px;color:var(--ink)">‹</button>
+            <div style="font-size:18px;font-weight:800">{{ tNotifTitle }}</div>
+          </div>
+          <div style="margin-top:18px;font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink4)">{{ tr.today }}</div>
+          <div style="margin-top:9px;display:flex;flex-direction:column;gap:9px">
+            <sc-for list="{{ notifsToday }}" as="n" hint-placeholder-count="3">
+              <div style="display:flex;gap:12px;align-items:flex-start;border:1px solid var(--ink08);border-radius:15px;background:{{ n.bg }};padding:13px 15px">
+                <div style="flex:none;width:9px;height:9px;border-radius:50%;background:{{ n.dot }};margin-top:5px"></div>
+                <div style="flex:1"><div style="font-size:13.5px;line-height:1.5">{{ n.text }}</div><div style="margin-top:3px;font-size:11.5px;color:var(--ink45);font-weight:600">{{ n.time }}</div></div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="margin-top:18px;font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink4)">{{ tr.earlier }}</div>
+          <div style="margin-top:9px;display:flex;flex-direction:column;gap:9px">
+            <sc-for list="{{ notifsEarlier }}" as="n" hint-placeholder-count="2">
+              <div style="display:flex;gap:12px;align-items:flex-start;border:1px solid var(--ink08);border-radius:15px;background:{{ n.bg }};padding:13px 15px">
+                <div style="flex:none;width:9px;height:9px;border-radius:50%;background:{{ n.dot }};margin-top:5px"></div>
+                <div style="flex:1"><div style="font-size:13.5px;line-height:1.5">{{ n.text }}</div><div style="margin-top:3px;font-size:11.5px;color:var(--ink45);font-weight:600">{{ n.time }}</div></div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vProfile }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Profile" style="min-height:100%;background:var(--bg);padding:62px 20px 110px">
+          <div style="display:flex;align-items:center;gap:15px">
+            <div style="width:70px;height:70px;border-radius:50%;background:var(--navyBtn);color:#BDF961;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;border:3px solid #24A551">Y</div>
+            <div style="flex:1">
+              <div style="font-size:20px;font-weight:800">Youssef Adel</div>
+              <div style="margin-top:2px;font-size:13px;color:var(--ink55)">+20 10 1234 5678</div>
+              <div style="margin-top:7px;display:flex;gap:6px">
+                <div style="font-size:11.5px;font-weight:700;background:var(--tint);padding:5px 10px;border-radius:999px">{{ tr.midfielder }}</div>
+                <div style="font-size:11.5px;font-weight:700;background:var(--limeChip);color:var(--limeChipFg);padding:5px 10px;border-radius:999px">{{ tr.intermediate }}</div>
+              </div>
+            </div>
+            <button onClick="{{ goSettings }}" style="border:none;background:none;color:#24A551;font-size:13px;font-weight:700;cursor:pointer">{{ tEdit }}</button>
+          </div>
+          <div style="margin-top:18px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+            <div style="border:1px solid var(--ink08);border-radius:15px;background:var(--card);padding:13px 0;text-align:center"><div style="font-size:19px;font-weight:800">18</div><div style="margin-top:2px;font-size:11px;color:var(--ink55);font-weight:600">{{ tr.matchesW }}</div></div>
+            <div style="border:1px solid var(--ink08);border-radius:15px;background:var(--card);padding:13px 0;text-align:center"><div style="font-size:19px;font-weight:800">12</div><div style="margin-top:2px;font-size:11px;color:var(--ink55);font-weight:600">{{ tr.bookingsW }}</div></div>
+            <div style="border:1px solid var(--ink08);border-radius:15px;background:var(--card);padding:13px 0;text-align:center"><div style="font-size:19px;font-weight:800;color:#24A551">★ 4.7</div><div style="margin-top:2px;font-size:11px;color:var(--ink55);font-weight:600">{{ tr.rating }}</div></div>
+          </div>
+          <div style="margin-top:18px;border:1px solid var(--ink08);border-radius:17px;background:var(--card);overflow:hidden">
+            <sc-for list="{{ profileMenu }}" as="r" hint-placeholder-count="6">
+              <button onClick="{{ r.go }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;border:none;border-bottom:1px solid var(--ink06);background:var(--card);padding:15px 17px;cursor:pointer;text-align:left" style-hover="background:var(--tint)">
+                <div style="font-size:14px;font-weight:600;color:var(--ink)">{{ r.label }}</div>
+                <div style="display:flex;align-items:center;gap:8px"><span style="font-size:12px;color:var(--ink45)">{{ r.sub }}</span><span style="color:var(--ink3);font-size:16px">›</span></div>
+              </button>
+            </sc-for>
+          </div>
+          <button style="margin-top:16px;width:100%;border:none;background:none;color:#d64545;font-size:14px;font-weight:600;padding:12px;cursor:pointer">{{ tLogout }}</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vSettings }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Settings" style="min-height:100%;background:var(--bg);padding:62px 20px 40px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <button onClick="{{ goProfile }}" style="flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink12);background:var(--card);cursor:pointer;font-size:18px;color:var(--ink)">‹</button>
+            <div style="font-size:18px;font-weight:800">{{ tSettingsTitle }}</div>
+          </div>
+          <div style="margin-top:18px;font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink4)">{{ tSecAppear }}</div>
+          <div style="margin-top:9px;border:1px solid var(--ink08);border-radius:17px;background:var(--card);overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 17px">
+              <div><div style="font-size:14px;font-weight:600">{{ tDark }}</div><div style="margin-top:2px;font-size:12px;color:var(--ink5)">{{ tDarkSub }}</div></div>
+              <button onClick="{{ flipDk }}" style="flex:none;width:46px;height:27px;border-radius:99px;border:none;background:{{ dkBg }};cursor:pointer;position:relative;transition:background .2s"><div style="position:absolute;top:3px;left:{{ dkKnob }};width:21px;height:21px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(3,8,20,.25);transition:left .2s"></div></button>
+            </div>
+          </div>
+          <div style="margin-top:18px;font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink4)">{{ tSecNotif }}</div>
+          <div style="margin-top:9px;border:1px solid var(--ink08);border-radius:17px;background:var(--card);overflow:hidden">
+            <sc-for list="{{ toggles }}" as="t" hint-placeholder-count="3">
+              <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink06);padding:14px 17px">
+                <div><div style="font-size:14px;font-weight:600">{{ t.label }}</div><div style="margin-top:2px;font-size:12px;color:var(--ink5)">{{ t.sub }}</div></div>
+                <button onClick="{{ t.flip }}" style="flex:none;width:46px;height:27px;border-radius:99px;border:none;background:{{ t.bg }};cursor:pointer;position:relative;transition:background .2s">
+                  <div style="position:absolute;top:3px;left:{{ t.knob }};width:21px;height:21px;border-radius:50%;background:var(--card);box-shadow:0 1px 3px rgba(3,8,20,.25);transition:left .2s"></div>
+                </button>
+              </div>
+            </sc-for>
+          </div>
+          <div style="margin-top:18px;font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink4)">{{ tSecGeneral }}</div>
+          <div style="margin-top:9px;border:1px solid var(--ink08);border-radius:17px;background:var(--card);overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink06);padding:15px 17px">
+              <div style="font-size:14px;font-weight:600">{{ tLanguage }}</div>
+              <div style="display:flex;gap:5px;background:var(--tint);border-radius:10px;padding:3px">
+                <button onClick="{{ setLangEn }}" style="border:none;cursor:pointer;font-size:12px;font-weight:700;padding:6px 12px;border-radius:8px;background:{{ langEnBg }};color:{{ langEnFg }}">English</button>
+                <button onClick="{{ setLangAr }}" style="border:none;cursor:pointer;font-size:12px;font-weight:700;padding:6px 12px;border-radius:8px;background:{{ langArBg }};color:{{ langArFg }};font-family:'IBM Plex Sans Arabic'">العربية</button>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink06);padding:15px 17px"><div style="font-size:14px;font-weight:600">{{ tPayment }}</div><span style="font-size:12px;color:var(--ink45)">{{ tr.cashSub }} ›</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink06);padding:15px 17px"><div style="font-size:14px;font-weight:600">{{ tPrivacy }}</div><span style="font-size:12px;color:var(--ink45)">{{ tr.pubProfile }} ›</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:15px 17px"><div style="font-size:14px;font-weight:600">{{ tHelp }}</div><span style="color:var(--ink3);font-size:16px">›</span></div>
+          </div>
+          <div style="margin-top:16px;font-size:11.5px;color:var(--ink4);text-align:center">{{ tr.version }}</div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vLoading }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="State — loading" style="min-height:100%;background:var(--bg);padding:62px 20px 110px">
+          <div style="display:flex;align-items:center;gap:11px">
+            <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(90deg,var(--tint) 25%,var(--shim2) 50%,var(--tint) 75%);background-size:360px 100%;animation:ehShimmer 1.3s infinite linear"></div>
+            <div style="flex:1"><div style="width:90px;height:11px;border-radius:6px;background:linear-gradient(90deg,var(--tint) 25%,var(--shim2) 50%,var(--tint) 75%);background-size:360px 100%;animation:ehShimmer 1.3s infinite linear"></div><div style="margin-top:7px;width:130px;height:14px;border-radius:6px;background:linear-gradient(90deg,var(--tint) 25%,var(--shim2) 50%,var(--tint) 75%);background-size:360px 100%;animation:ehShimmer 1.3s infinite linear"></div></div>
+            <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(90deg,var(--tint) 25%,var(--shim2) 50%,var(--tint) 75%);background-size:360px 100%;animation:ehShimmer 1.3s infinite linear"></div>
+          </div>
+          <div style="margin-top:16px;height:50px;border-radius:14px;background:linear-gradient(90deg,var(--tint) 25%,var(--shim2) 50%,var(--tint) 75%);background-size:360px 100%;animation:ehShimmer 1.3s infinite linear"></div>
+          <div style="margin-top:14px;height:150px;border-radius:20px;background:linear-gradient(90deg,var(--tint) 25%,var(--shim2) 50%,var(--tint) 75%);background-size:360px 100%;animation:ehShimmer 1.3s infinite linear"></div>
+          <div style="margin-top:22px;width:140px;height:16px;border-radius:6px;background:linear-gradient(90deg,var(--tint) 25%,var(--shim2) 50%,var(--tint) 75%);background-size:360px 100%;animation:ehShimmer 1.3s infinite linear"></div>
+          <div style="margin-top:12px;display:flex;gap:14px">
+            <div style="flex:none;width:236px;height:210px;border-radius:18px;background:linear-gradient(90deg,var(--tint) 25%,var(--shim2) 50%,var(--tint) 75%);background-size:360px 100%;animation:ehShimmer 1.3s infinite linear"></div>
+            <div style="flex:none;width:236px;height:210px;border-radius:18px;background:linear-gradient(90deg,var(--tint) 25%,var(--shim2) 50%,var(--tint) 75%);background-size:360px 100%;animation:ehShimmer 1.3s infinite linear"></div>
+          </div>
+          <div style="margin-top:24px;text-align:center;font-size:12.5px;color:var(--ink45);font-weight:600">{{ tr.finding }}</div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vEmpty }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="State — no results" style="min-height:100%;background:var(--bg);display:flex;flex-direction:column;padding:62px 24px 40px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <button onClick="{{ goSearch }}" style="flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink12);background:var(--card);cursor:pointer;font-size:18px;color:var(--ink)">‹</button>
+            <div style="font-size:18px;font-weight:800">{{ tr.searchT }}</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+            <div style="position:relative;width:96px;height:96px;border-radius:50%;background:var(--tint);display:flex;align-items:center;justify-content:center">
+              <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#24A551" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5 21 21"></path></svg>
+              <div style="position:absolute;top:-2px;right:-2px;width:26px;height:26px;border-radius:50%;background:var(--navyBtn);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800">0</div>
+            </div>
+            <div style="margin-top:18px;font-size:18px;font-weight:800">{{ tr.noPitches }}</div>
+            <div style="margin-top:8px;font-size:13.5px;color:var(--ink55);line-height:1.55;max-width:270px">{{ tr.noPitchesSub }}</div>
+            <button onClick="{{ goBooking }}" style="margin-top:20px;border:none;background:#24A551;color:#fff;font-size:14.5px;font-weight:700;padding:14px 26px;border-radius:13px;cursor:pointer">{{ tr.anotherTime }}</button>
+            <button onClick="{{ openSheet2 }}" style="margin-top:10px;border:none;background:none;color:#24A551;font-size:13.5px;font-weight:600;cursor:pointer;padding:8px">{{ tr.clearFilters }}</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vFailed }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="State — payment failed" style="min-height:100%;background:var(--bg);display:flex;flex-direction:column;padding:90px 24px 40px">
+          <div style="align-self:center;width:92px;height:92px;border-radius:50%;background:rgba(214,69,69,.12);display:flex;align-items:center;justify-content:center;animation:ehPop .5s ease both">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#d64545" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+          </div>
+          <div style="margin-top:22px;text-align:center;font-size:24px;font-weight:800">{{ tr.payFailed }}</div>
+          <div style="margin-top:9px;text-align:center;font-size:14px;color:var(--ink6);line-height:1.6;padding:0 14px">{{ tr.payFailedSub }}</div>
+          <div style="margin-top:20px;border:1px solid var(--ink08);border-radius:16px;background:var(--card);padding:14px 16px;display:flex;justify-content:space-between;font-size:13.5px">
+            <span style="color:var(--ink55)">{{ selName }} · {{ durStr }}</span><span style="font-weight:800">{{ totalStr }} {{ tr.egp }}</span>
+          </div>
+          <button onClick="{{ goSummary }}" style="margin-top:auto;border:none;background:#24A551;color:#fff;font-size:15px;font-weight:700;padding:16px;border-radius:14px;cursor:pointer">{{ tr.retryPay }}</button>
+          <button onClick="{{ confirmBooking }}" style="margin-top:10px;border:1.5px solid var(--ink14);background:var(--card);color:var(--ink);font-size:14px;font-weight:600;padding:14px;border-radius:14px;cursor:pointer">{{ tr.payCashInstead }}</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vFull }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="State — match full" style="min-height:100%;background:var(--bg);display:flex;flex-direction:column;padding:62px 24px 40px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <button onClick="{{ goDiscover }}" style="flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--ink12);background:var(--card);cursor:pointer;font-size:18px;color:var(--ink)">‹</button>
+            <div style="font-size:18px;font-weight:800">{{ tr.matchDetails }}</div>
+          </div>
+          <div style="margin-top:16px;border:1px solid var(--ink08);border-radius:18px;background:var(--card);padding:16px 17px;opacity:.75">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <div style="font-size:15px;font-weight:800">Champions Park</div>
+              <div style="font-size:10.5px;font-weight:800;color:#fff;background:var(--navyBtn);padding:5px 10px;border-radius:999px">{{ tr.fullChip }}</div>
+            </div>
+            <div style="margin-top:5px;font-size:12.5px;color:var(--ink55)">{{ tr.mm5 }}</div>
+            <div style="margin-top:12px;height:6px;border-radius:99px;background:var(--tint);overflow:hidden"><div style="height:100%;width:100%;background:var(--navyBtn);border-radius:99px"></div></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+            <div style="width:88px;height:88px;border-radius:50%;background:var(--tint);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;color:var(--ink)">10/10</div>
+            <div style="margin-top:16px;font-size:18px;font-weight:800">{{ tr.fullT }}</div>
+            <div style="margin-top:8px;font-size:13.5px;color:var(--ink55);line-height:1.55;max-width:260px">{{ tr.fullSub }}</div>
+          </div>
+          <button style="border:1.5px solid var(--ink14);background:var(--card);color:var(--ink);font-size:14px;font-weight:600;padding:14px;border-radius:14px;cursor:pointer">{{ tr.waitlist }}</button>
+          <button onClick="{{ goDiscover }}" style="margin-top:10px;border:none;background:#24A551;color:#fff;font-size:15px;font-weight:700;padding:15px;border-radius:14px;cursor:pointer">{{ tr.anotherMatch }}</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ vNetwork }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="State — offline" style="min-height:100%;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center">
+          <div style="width:96px;height:96px;border-radius:50%;background:var(--tint);display:flex;align-items:center;justify-content:center">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#061533" stroke-width="2" stroke-linecap="round"><path d="M2 9c5.5-5 14.5-5 20 0M5.5 12.5c3.6-3.2 9.4-3.2 13 0M9 16c1.7-1.5 4.3-1.5 6 0"></path><circle cx="12" cy="19" r="1.3" fill="#061533"></circle><path d="M4 4l16 16" stroke="#d64545" stroke-width="2.4"></path></svg>
+          </div>
+          <div style="margin-top:20px;font-size:19px;font-weight:800">{{ tr.offline }}</div>
+          <div style="margin-top:8px;font-size:13.5px;color:var(--ink55);line-height:1.55;max-width:250px">{{ tr.offlineSub }}</div>
+          <button onClick="{{ goHome }}" style="margin-top:20px;border:none;background:#24A551;color:#fff;font-size:14.5px;font-weight:700;padding:14px 30px;border-radius:13px;cursor:pointer">{{ tr.retry }}</button>
+          <button onClick="{{ goBookings }}" style="margin-top:10px;border:none;background:none;color:#24A551;font-size:13.5px;font-weight:600;cursor:pointer;padding:8px">{{ tr.savedBk }}</button>
+        </div>
+      </sc-if>
+
+      </div>
+
+      <sc-if value="{{ showNav }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;left:0;right:0;bottom:0;z-index:45;background:var(--bar);border-top:1px solid var(--ink08);backdrop-filter:blur(10px);padding:9px 8px 22px;display:flex">
+          <button onClick="{{ goHome }}" style="flex:1;border:none;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;color:{{ nc0 }}">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5.5 9.5V21h13V9.5"></path></svg>
+            <span style="font-size:10.5px;font-weight:700">{{ tNav0 }}</span>
+          </button>
+          <button onClick="{{ goDiscover }}" style="flex:1;border:none;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;color:{{ nc1 }}">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5 21 21"></path></svg>
+            <span style="font-size:10.5px;font-weight:700">{{ tNav1 }}</span>
+          </button>
+          <button onClick="{{ goBookings }}" style="flex:1;border:none;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;color:{{ nc2 }}">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="17" rx="3"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+            <span style="font-size:10.5px;font-weight:700">{{ tNav2 }}</span>
+          </button>
+          <button onClick="{{ goMyMatches }}" style="flex:1;border:none;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;color:{{ nc3 }}">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><circle cx="17" cy="9" r="2.5"></circle><path d="M16 14.6c2.5.4 4.5 2.6 4.5 5.4"></path></svg>
+            <span style="font-size:10.5px;font-weight:700">{{ tNav3 }}</span>
+          </button>
+          <button onClick="{{ goProfile }}" style="flex:1;border:none;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;color:{{ nc4 }}">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"></path></svg>
+            <span style="font-size:10.5px;font-weight:700">{{ tNav4 }}</span>
+          </button>
+        </div>
+      </sc-if>
+      <div style="position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:130px;height:5px;border-radius:99px;background:{{ hiColor }};z-index:46"></div>
+    </div>
+  </div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900},&quot;showArabic&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Brand&quot;},&quot;pricePerHour&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:200,&quot;min&quot;:100,&quot;max&quot;:400,&quot;step&quot;:10,&quot;unit&quot;:&quot;EGP&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Business rules&quot;},&quot;bookingFee&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:20,&quot;min&quot;:0,&quot;max&quot;:50,&quot;step&quot;:5,&quot;unit&quot;:&quot;EGP&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Business rules&quot;}}">
+class Component extends DCLogic {
+  state = {
+    screen: 'splash', dk: false, lang: 'en', ob: 0, obDir: 1, sheet: false, chip: 0, ftype: 0, fprice: 0, fdist: 0, findChip: 0,
+    selPitch: 0, selTime: null, selDur: 2, pay: 0, pos: 2, skill: 1, calM: 0, selM: 0, selD: 21, recur: false, payMode: 0,
+    bookTab: 0, matchTab: 0, join: {}, posted: false, need: 2, lvl: 1, priv: 0, q: '',
+    tg: { rem: true, upd: true, mkt: false }, selMatch: 0,
+    msgs: [
+      { sys: true, text: 'Omar joined the match', ar: 'عمر انضم للماتش' },
+      { who: 'Ahmed', whoAr: 'أحمد', initial: 'A', avBg: 'var(--avatarNavy)', avFg: '#BDF961', text: 'Squad is almost ready — 2 spots left. Invite anyone solid.', ar: 'الشلة شبه كاملة — فاضل مكانين. اعزم أي حد جامد.' },
+      { who: 'Omar', whoAr: 'عمر', initial: 'O', avBg: 'var(--tint)', avFg: '#24A551', text: 'My cousin plays CB, adding him now', ar: 'ابن عمي بيلعب قلب دفاع، هضيفه دلوقتي' },
+      { mine: true, text: 'Booked the pitch 8 to 10. Gate 2 has parking.', ar: 'حجزت الملعب من 8 لـ 10. بوابة 2 فيها باركينج.' },
+      { who: 'Ahmed', whoAr: 'أحمد', initial: 'A', avBg: 'var(--avatarNavy)', avFg: '#BDF961', text: 'Perfect. Bibs on me, bring 50 each for the pitch.', ar: 'تمام. البيبات عليّا، كل واحد يجيب 50 للملعب.' },
+    ], draft: ''
+  };
+  scr = null;
+  chatEl = null;
+  nav(s, extra) { this.setState(Object.assign({ screen: s, sheet: false }, extra || {})); requestAnimationFrame(() => { if (this.scr) this.scr.scrollTop = 0; }); }
+  renderVals() {
+    const S = this.state, N = 'var(--ink)', G = '#24A551', L = '#BDF961', T = 'var(--tint)';
+    const arab = this.props.showArabic ?? true;
+    const en = S.lang !== 'ar';
+    const t = (e, a) => en ? e : a;
+    const tyAr = { 'All': 'الكل', '5-a-side': 'خماسي', '7-a-side': 'سباعي', '8-a-side': 'ثماني', '11-a-side': '11 لاعب' };
+    const arAreas = { 'Fayoum City': 'مدينة الفيوم', 'Sinnuris': 'سنورس', 'Tamiya': 'طامية', 'Ibsheway': 'إبشواي' };
+    const dayAr = { 'Friday': 'الجمعة', 'Saturday': 'السبت', 'Sunday': 'الأحد' };
+    const lvlAr = { 'Beginner': 'مبتدئ', 'Intermediate': 'متوسط', 'Advanced': 'متقدم', 'Any level': 'أي مستوى' };
+    const tr = {
+      skip: t('Skip','تخطي'), welcome: t('Welcome back','أهلاً بيك تاني'), loginSub: t('Log in with your phone number to book pitches and join matches.','سجّل دخول برقم موبايلك عشان تحجز ملاعب وتنضم لماتشات.'), phone: t('Phone number','رقم الموبايل'), continue: t('Continue','متابعة'), or: t('or','أو'), google: t('Continue with Google','المتابعة بجوجل'), apple: t('Continue with Apple','المتابعة بآبل'), newTo: t('New to ELHAREEF?','جديد على الحريف؟'), createAcc: t('Create account','إنشاء حساب'), signupSub: t('Tell us a little about how you play.','قولنا شوية عن طريقة لعبك.'), fullName: t('Full name','الاسم بالكامل'), prefPos: t('Preferred position','مركزك المفضل'), skill: t('Skill level','مستوى المهارة'),
+      cairo: t('Fayoum','الفيوم'), greetName: t('Evening, Youssef','مساء الخير يا يوسف'), greetFull: t('Evening, Youssef — ready to play?','مساء الخير يا يوسف — جاهز تلعب؟'), tonightAt: t('Tonight at Dream Sports Arena','الليلة في دريم سبورتس أرينا'), joinMatch: t('Join match','انضم للماتش'),
+      resultsMeta: t('pitches · Fayoum · tonight','ملعب · الفيوم · الليلة'), filters: t('Filters','الفلاتر'), reset: t('Reset','إعادة ضبط'), pricePerHr: t('Price per hour','السعر بالساعة'), pitchType: t('Pitch type','نوع الملعب'), distance: t('Distance','المسافة'), show: t('Show','اعرض'), pitchesWord: t('pitches','ملعب'),
+      photos: t('1 / 6 photos','1 / 6 صور'), turf: t('Artificial turf','نجيلة صناعية'), floodlit: t('Floodlit','كشافات'), facilitiesT: t('Facilities','المرافق'), tonightSlots: t("Tonight's slots",'مواعيد الليلة'), fridayAug: t('Friday, Aug 21','الجمعة، 21 أغسطس'), reviews: t('Reviews','التقييمات'), rev1: t('Best turf in Fayoum. Lights are strong, showers actually work.','أحسن نجيلة في الفيوم. الإضاءة قوية والدُش شغال بجد.'), rev2: t('Parking fills up after 8 PM, come early. Pitch itself is excellent.','الباركينج بيتملي بعد 8، تعالى بدري. الملعب نفسه ممتاز.'), egphr: t('EGP/hr','جنيه/ساعة'), perHrShort: t(' /hr',' /ساعة'), egp: t('EGP','جنيه'), freeCancel: t('Free cancellation','إلغاء مجاني'), bookThis: t('Book this pitch','احجز الملعب ده'),
+      step1: t('1 · Pick a date','1 · اختار اليوم'), step2: t('2 · Pick a start time','2 · اختار ساعة البداية'), step3: t('3 · How long?','3 · هتلعبوا قد إيه؟'), repeatW: t('Repeat weekly','كرر أسبوعيًا'), repeatSub: t('Lock this slot — same day & time — for 4 weeks','ثبّت المعاد — نفس اليوم والساعة — لمدة 4 أسابيع'), repeatNote: t('A deposit locks in all 4 sessions. Pay the rest at the venue each week.','الديبوزيت بيثبّت الـ 4 مواعيد. ادفع الباقي في الملعب كل أسبوع.'),
+      sumTitle: t('Booking summary','ملخص الحجز'), date: t('Date','التاريخ'), time: t('Time','الساعة'), duration: t('Duration','المدة'), schedule: t('Schedule','الجدول'), weekly4: t('Weekly × 4 sessions','أسبوعي × 4 مرات'), fee: t('Booking fee','رسوم الحجز'), total: t('Total','الإجمالي'), dueNow: t('Due now — deposit','المطلوب دلوقتي — ديبوزيت'), atVenue: t('At the venue','في الملعب'), howMuch: t('How much now?','هتدفع قد إيه دلوقتي؟'), payWith: t('Pay with','طريقة الدفع'), cancelNote: t('Free cancellation up to 12 hours before kick-off. After that the booking fee is non-refundable.','إلغاء مجاني حتى 12 ساعة قبل الماتش. بعدها رسوم الحجز غير قابلة للاسترداد.'), confirmBk: t('Confirm booking','أكّد الحجز'),
+      confirmedT: t('Booking confirmed','تم تأكيد الحجز'), bookingId: t('Booking ID','رقم الحجز'), missingP: t('Missing players? Post your match and nearby hareefa will fill the gap.','ناقصك لاعيبة؟ انشر ماتشك والحريف القريبين هيكملوا النقص.'), findPlayers: t('Find players','دوّر على لاعيبة'), viewBooking: t('View booking','شوف الحجز'),
+      needPlayersT: t('Need players?','محتاج لاعيبة؟'), squadFor: t('Your squad for','تشكيلتك في'), sixOf8: t('6 of 8 confirmed','6 من 8 مؤكدين'), need2: t('You still need 2 players','لسه محتاج 2 لاعيبة'), skipFull: t("We're full, skip",'إحنا كاملين، تخطى'),
+      createMatch: t('Create match','اعمل ماتش'), playersNeeded: t('Players needed','عدد اللاعيبة المطلوبين'), desc: t('Description','الوصف'), optional: t('· optional','· اختياري'), descPh: t('Friendly match, intermediate level.','ماتش ودي، مستوى متوسط.'), whoJoin: t('Who can join','مين يقدر ينضم'), postMatch: t('Post match · need','انشر الماتش · محتاج'),
+      matchLive: t('Your match is live.','ماتشك اتنشر.'), needsWord: t('needs','محتاج'), manage: t('Manage','إدارة'), details: t('Details','التفاصيل'), playersWord: t('players','لاعيبة'),
+      matchDetails: t('Match details','تفاصيل الماتش'), kickoff: t('Kick-off','البداية'), level: t('Level','المستوى'), orgMeta: t('Organizer · ★ 4.8 · 42 matches','منظم · ★ 4.8 · 42 ماتش'), playersT: t('Players','اللاعيبة'), spotsLeft: t('spots left','أماكن فاضية'), aboutMatch: t('About this match','عن الماتش'), matchTips: t('Shin guards recommended · cost split at the venue · arrive 10 min early.','يفضل واقي ساق · التكلفة بتتقسم في الملعب · تعالى قبلها بـ 10 دقايق.'),
+      playerT: t('Player','اللاعيب'), playerMeta: t('@ahmed_h · Fayoum City · member since 2025','@ahmed_h · مدينة الفيوم · عضو من 2025'), midfielder: t('Midfielder','وسط'), intermediate: t('Intermediate','متوسط'), matchesW: t('Matches','ماتشات'), rating: t('Rating','التقييم'), hosted: t('Hosted','نظّمها'), bookingsW: t('Bookings','حجوزات'), about: t('About','نبذة'), playerBio: t('Weeknight regular. Prefers 7- and 8-a-side around Fayoum. Plays box-to-box, brings a spare bib.','بيلعب وسط الأسبوع بانتظام. بيفضل الخماسي والسباعي حوالين الفيوم.'), usually: t('Usually plays','بيلعب عادة'), weeknights: t('Weeknights 8–10 PM','وسط الأسبوع 8–10 م'), fridays: t('Fridays','الجُمَع'), rev3: t('Great organizer — pitch was booked, teams were fair, started on time.','منظم ممتاز — الملعب كان محجوز، الفرق عادلة، وبدأنا في المعاد.'), message: t('Message','ابعت رسالة'),
+      chatTitle: t('Dream Sports Arena — Fri 8 PM','دريم سبورتس أرينا — الجمعة 8 م'), chatSub: t('7 players · 2 online','7 لاعيبة · 2 متصلين'), onWay: t('On my way','في الطريق'), arrived: t("I've arrived",'وصلت'), sharePin: t('Share pitch pin','شارك لوكيشن الملعب'), msgPh: t('Message the squad...','ابعت للشلة...'),
+      view: t('View','شوف'), bookAgain: t('Book again','احجز تاني'), refunded: t('Refunded','تم الاسترداد'), emptyBk: t("You don't have any upcoming bookings.",'مفيش حجوزات قادمة.'), emptyBkSub: t('Grab a pitch and get the squad together.','احجز ملعب ولمّ الشلة.'), bookPitchBtn: t('Book a pitch','احجز ملعب'),
+      bkDetails: t('Booking details','تفاصيل الحجز'), confirmedChip: t('CONFIRMED','مؤكد'), payment: t('Payment','الدفع'), gateNote: t('Show your booking ID at the venue gate. Free cancellation until Friday 8:00 AM.','ورّي رقم الحجز على بوابة الملعب. إلغاء مجاني حتى الجمعة 8 صباحًا.'), findForMatch: t('Find players for this match','دوّر على لاعيبة للماتش ده'), cancelBk: t('Cancel booking','إلغاء الحجز'),
+      hosting: t('HOSTING','منظّم'), joinedChip: t('JOINED','منضم'), played: t('PLAYED · AUG 9','اتلعب · 9 أغسطس'), mm1: t('Friday · 8:00 PM · 2 hours','الجمعة · 8:00 م · ساعتين'), mm2: t('1 player needed · 3 requests waiting','محتاج لاعيب واحد · 3 طلبات مستنية'), squadChat: t('Squad chat','شات الشلة'), openMatch: t('Open match','افتح الماتش'), mm3: t('Saturday · 7:00 PM · organized by Omar','السبت · 7:00 م · تنظيم عمر'), leave: t('Leave match','انسحب من الماتش'), mm4: t('Final squad 10/10 · organized by Karim','التشكيلة النهائية 10/10 · تنظيم كريم'), rate: t('Rate the players','قيّم اللاعيبة'), mm5: t('Sunday · 9:00 PM · organized by Karim','الأحد · 9:00 م · تنظيم كريم'),
+      today: t('Today','النهارده'), earlier: t('Earlier','قبل كده'), version: t('ELHAREEF v1.0 · Made in Fayoum','الحريف v1.0 · صنع في الفيوم'), cashSub: t('Card · Wallet','كارت · محفظة'), pubProfile: t('Public profile','بروفايل عام'),
+      finding: t('Finding pitches near you...','بندوّر على ملاعب قريبة منك...'), noPitches: t('No pitches available for this time','مفيش ملاعب متاحة في المعاد ده'), noPitchesSub: t('Friday 8:00 PM is fully booked nearby. Try a different time or widen your search area.','الجمعة 8 م كله محجوز قريب منك. جرّب معاد تاني أو وسّع نطاق البحث.'), anotherTime: t('Find another time','دوّر على معاد تاني'), clearFilters: t('Clear filters','امسح الفلاتر'), searchT: t('Search','البحث'), payFailed: t('Payment failed','فشل الدفع'), payFailedSub: t('Your card was declined and no money was taken. Your slot is held for 9:47 minutes.','الكارت اترفض ومفيش فلوس اتخصمت. معادك محجوز ليك لمدة 9:47 دقيقة.'), retryPay: t('Retry payment','حاول الدفع تاني'), payCashInstead: t('Pay cash at the venue instead','ادفع كاش في الملعب بدل كده'), fullChip: t('FULL 10/10','كامل 10/10'), fullT: t('This match just filled up','الماتش ده لسه مكتمل'), fullSub: t('You can join the waitlist in case someone drops, or find another match tonight.','تقدر تدخل قايمة الانتظار لو حد انسحب، أو دوّر على ماتش تاني الليلة.'), waitlist: t('Join waitlist','ادخل قايمة الانتظار'), anotherMatch: t('Find another match','دوّر على ماتش تاني'), offline: t("You're offline",'النت فاصل'), offlineSub: t('Check your connection and try again. Your upcoming bookings are saved on this device.','اتأكد من النت وحاول تاني. حجوزاتك القادمة متسجلة على الجهاز.'), retry: t('Retry','حاول تاني'), savedBk: t('View saved bookings','شوف الحجوزات المحفوظة')
+    };
+    const rate = this.props.pricePerHour ?? 200;
+    const fee = this.props.bookingFee ?? 20;
+    const nav = (s, e) => () => this.nav(s, e);
+    const set = (k) => (v) => () => this.setState({ [k]: v });
+    const chipS = (on) => on ? { bd: 'var(--chipOn)', bg: 'var(--chipOn)', fg: 'var(--chipOnFg)', anim: 'ehPick .35s cubic-bezier(.16,1,.3,1)' } : { bd: 'var(--ink14)', bg: 'var(--card)', fg: N, anim: 'none' };
+    const segS = (on) => on ? { bg: 'var(--segOn)', fg: N, sh: '0 1px 4px rgba(3,8,20,.12)' } : { bg: 'none', fg: 'var(--ink55)', sh: 'none' };
+    const grads = ['linear-gradient(135deg,#2fae5c,#187a3d)', 'linear-gradient(135deg,#3cb96a,#1d8746)', 'linear-gradient(135deg,#28a155,#0f6c33)', 'linear-gradient(135deg,#45c076,#24A551)'];
+    const P = [
+      { name: 'Dream Sports Arena', area: 'Fayoum City', dist: '2.1 km', rating: '4.8', reviews: 124, price: rate, type: '8-a-side', now: true },
+      { name: 'Green Field Club', area: 'Sinnuris', dist: '3.4 km', rating: '4.6', reviews: 89, price: 180, type: '5-a-side', now: false },
+      { name: 'Champions Park', area: 'Tamiya', dist: '4.0 km', rating: '4.9', reviews: 203, type: '7-a-side', price: 250, now: true },
+      { name: 'Victory Grounds', area: 'Ibsheway', dist: '8.2 km', rating: '4.5', reviews: 61, type: '11-a-side', price: 150, now: false },
+    ];
+    const pitches = P.map((p, i) => Object.assign({}, p, { slot: 'ph-' + i, photo: (window.__resources && window.__resources['pitch' + i]) || ('assets/pitch-' + i + '.png'), grad: grads[i % 4], priceStr: String(p.price), tyLabel: t(p.type, tyAr[p.type] || p.type), areaLabel: t(p.area, arAreas[p.area] || p.area), distLabel: en ? p.dist : p.dist.replace(' km', ' كم'), open: nav('pitch', { selPitch: i }) }));
+    const sel = pitches[S.selPitch];
+    // search
+    const q = S.q.toLowerCase();
+    const typeNames = ['All', '5-a-side', '7-a-side', '8-a-side', '11-a-side'];
+    let results = pitches.filter(p => !q || (p.name + ' ' + p.area).toLowerCase().includes(q));
+    if (S.ftype > 0) results = results.filter(p => p.type === typeNames[S.ftype]);
+    // booking
+    const months = [{ name: t('August 2026', 'أغسطس 2026'), mi: 7, len: 31 }, { name: t('September 2026', 'سبتمبر 2026'), mi: 8, len: 30 }];
+    const cm = months[S.calM];
+    const calOff = (new Date(2026, cm.mi, 1).getDay() + 1) % 7;
+    const calCells = [];
+    for (let i = 0; i < calOff; i++) calCells.push({ label: '', pick: () => {}, bg: 'transparent', fg: 'transparent', cur: 'default', fw: '600' });
+    for (let dd = 1; dd <= cm.len; dd++) {
+      const past = S.calM === 0 && dd < 21;
+      const on = S.selM === S.calM && S.selD === dd;
+      calCells.push({ label: String(dd), pick: past ? () => {} : () => this.setState({ selM: this.state.calM, selD: dd }), bg: on ? G : 'transparent', fg: past ? 'var(--ink25)' : (on ? '#fff' : N), cur: past ? 'default' : 'pointer', fw: on ? '800' : '600', anim: on ? 'ehPick .35s cubic-bezier(.16,1,.3,1)' : 'none' });
+    }
+    const wdShort = en ? ['Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr'] : ['س', 'ح', 'ن', 'ث', 'ر', 'خ', 'ج'];
+    const wdFull = en ? ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] : ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
+    const moShort = en ? ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] : ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
+    const fdate = (dt) => en ? (wdFull[dt.getDay()] + ', ' + moShort[dt.getMonth()] + ' ' + dt.getDate()) : (wdFull[dt.getDay()] + '، ' + dt.getDate() + ' ' + moShort[dt.getMonth()]);
+    const fshort = (dt) => en ? (moShort[dt.getMonth()] + ' ' + dt.getDate()) : (dt.getDate() + ' ' + moShort[dt.getMonth()]);
+    const slotH = [16, 17, 18, 19, 20, 21, 22]; const busy = [17, 19];
+    const fmt = (h) => (((h + 11) % 12) + 1) + ':00 ' + (h % 24 >= 12 ? t('PM', 'م') : t('AM', 'ص'));
+    const slots = slotH.map(h => { const on = S.selTime === h, b = busy.includes(h); return { label: fmt(h), busy: b, pick: b ? () => {} : set('selTime')(h), bd: on ? G : 'var(--ink12)', bg: b ? T : (on ? G : 'var(--card)'), fg: b ? 'var(--ink3)' : (on ? '#fff' : N), cur: b ? 'not-allowed' : 'pointer', deco: b ? 'line-through' : 'none', anim: on ? 'ehPick .35s cubic-bezier(.16,1,.3,1)' : 'none' }; });
+    const durs = [1, 2, 3, 4].map(h => { const on = S.selDur === h; return { label: en ? (h + (h === 1 ? ' hour' : ' hours')) : (h === 1 ? 'ساعة' : h === 2 ? 'ساعتين' : h + ' ساعات'), pick: set('selDur')(h), bd: on ? G : 'var(--ink12)', bg: on ? G : 'var(--card)', fg: on ? '#fff' : N, anim: on ? 'ehPick .35s cubic-bezier(.16,1,.3,1)' : 'none' }; });
+    const t0 = S.selTime ?? 20;
+    const selDateObj = new Date(2026, months[S.selM].mi, S.selD);
+    const dateStr = fdate(selDateObj);
+    const recurDates = []; for (let k = 0; k < 4; k++) { const dt = new Date(2026, months[S.selM].mi, S.selD + 7 * k); recurDates.push(fshort(dt)); }
+    const sessions = S.recur ? 4 : 1;
+    const price = S.selDur * sel.price * sessions, total = price + fee;
+    const deposit = Math.max(50, Math.round(total * 0.25 / 5) * 5);
+    const dueNow = S.payMode === 1 ? deposit : total;
+    const rangeStr = fmt(t0) + ' – ' + fmt(t0 + S.selDur);
+    const durStr = en ? (S.selDur + (S.selDur === 1 ? ' hour' : ' hours')) : (S.selDur === 1 ? 'ساعة' : S.selDur === 2 ? 'ساعتين' : S.selDur + ' ساعات');
+    const noTime = S.selTime === null;
+    // matches
+    const lvls = ['Beginner', 'Intermediate', 'Advanced', 'Any level'];
+    const M = [
+      { org: 'Ahmed Hassan', initial: 'A', avBg: 'var(--avatarNavy)', avFg: L, pitch: 'Dream Sports Arena', area: 'Fayoum City', day: 'Friday', time: '8:00 PM', dur: '2 hours', joined: 6, total: 8, level: 'Intermediate', grad: grads[0], desc: 'Friendly match, intermediate level. We split the pitch cost evenly and rotate keepers every 20 minutes.' },
+      { org: 'Omar Tarek', initial: 'O', avBg: T, avFg: G, pitch: 'Green Field Club', area: 'Sinnuris', day: 'Saturday', time: '7:00 PM', dur: '1 hour', joined: 8, total: 10, level: 'Advanced', grad: grads[1], desc: 'Fast-paced game, advanced players only please.' },
+      { org: 'Karim Said', initial: 'K', avBg: G, avFg: '#fff', pitch: 'Champions Park', area: 'Tamiya', day: 'Sunday', time: '9:00 PM', dur: '2 hours', joined: 4, total: 10, level: 'Any level', grad: grads[2], desc: 'Casual Sunday game, everyone welcome.' },
+    ];
+    const joinLabelFor = (st, needed) => st === 'joined' ? { joinLabel: t('Open chat', 'افتح الشات'), joinBg: T, joinFg: G } : st === 'pending' ? { joinLabel: t('Request sent...', 'الطلب اتبعت...'), joinBg: 'var(--tint)', joinFg: 'var(--ink55)' } : { joinLabel: en ? ('Join match · ' + needed + ' needed') : ('انضم · محتاجين ' + needed), joinBg: G, joinFg: '#fff' };
+    const doJoin = (i) => () => {
+      const st = this.state.join[i];
+      if (st === 'joined') return this.nav('chat');
+      if (st === 'pending') return;
+      this.setState(s => ({ join: Object.assign({}, s.join, { [i]: 'pending' }) }));
+      setTimeout(() => this.setState(s => ({ join: Object.assign({}, s.join, { [i]: 'joined' }) })), 1100);
+    };
+    const matches = M.map((m, i) => Object.assign({}, m, { needed: m.total - m.joined, needsLabel: en ? ('Needs ' + (m.total - m.joined) + ' players') : ('محتاج ' + (m.total - m.joined) + ' لاعيبة'), day: t(m.day, dayAr[m.day] || m.day), time: en ? m.time : m.time.replace(' PM', ' م').replace(' AM', ' ص'), dur: t(m.dur, m.dur === '1 hour' ? 'ساعة' : 'ساعتين'), level: t(m.level, lvlAr[m.level] || m.level), areaLabel: t(m.area, arAreas[m.area] || m.area), desc: t(m.desc, ['ماتش ودي مستوى متوسط. بنقسم تكلفة الملعب بالتساوي وبنبدل الحارس كل 20 دقيقة.', 'لعب سريع، للمتقدمين بس.', 'ماتش حبي يوم الأحد، الكل مرحب بيه.'][i]), pct: Math.round(m.joined / m.total * 100) + '%', openDetails: nav('matchdetails', { selMatch: i }), join: doJoin(i) }, joinLabelFor(S.join[i], m.total - m.joined)));
+    const mm = matches[S.selMatch];
+    const mSt = S.join[S.selMatch];
+    const mSlots = []; for (let i = 0; i < mm.total; i++) { const filled = i < mm.joined; const names = en ? ['Ahmed', 'Omar', 'Karim', 'Hady', 'Ziad', 'Tamer', 'Nour', 'Aly', 'Seif', 'Adam'] : ['أحمد', 'عمر', 'كريم', 'هادي', 'زياد', 'تامر', 'نور', 'علي', 'سيف', 'آدم']; mSlots.push(filled ? { label: names[i][0], name: names[i], bg: i % 2 ? T : 'var(--avatarNavy)', fg: i % 2 ? G : L, bd: 'none' } : { label: '+', name: t('Open', 'فاضي'), bg: 'var(--card)', fg: 'var(--ink35)', bd: '2px dashed var(--ink25)' }); }
+    const squad = []; for (let i = 0; i < 8; i++) { const names = en ? ['You', 'Ahmed', 'Omar', 'Karim', 'Hady', 'Ziad', '', ''] : ['أنت', 'أحمد', 'عمر', 'كريم', 'هادي', 'زياد', '', '']; squad.push(i < 6 ? { label: names[i][0], name: names[i], bg: i === 0 ? 'var(--avatarNavy)' : (i % 2 ? T : G), fg: i === 0 ? L : (i % 2 ? G : '#fff'), bd: 'none' } : { label: '?', name: t('Needed', 'ناقص'), bg: 'var(--card)', fg: 'var(--ink3)', bd: '2px dashed var(--ink25)' }); }
+    // bookings
+    const BK = [
+      [{ pitch: 'Dream Sports Arena', date: dateStr, time: rangeStr, dur: durStr, status: t('Confirmed', 'مؤكد'), stBg: T, stFg: G, price: String(total), upcoming: true },
+       { pitch: 'Green Field Club', date: t('Sunday, Aug 30', 'الأحد، 30 أغسطس'), time: t('7:00 PM – 8:00 PM', '7:00 م – 8:00 م'), dur: t('1 hour', 'ساعة'), status: t('Confirmed', 'مؤكد'), stBg: T, stFg: G, price: '200', upcoming: true }],
+      [{ pitch: 'Champions Park', date: t('Sunday, Aug 9', 'الأحد، 9 أغسطس'), time: t('9:00 PM – 11:00 PM', '9:00 م – 11:00 م'), dur: t('2 hours', 'ساعتين'), status: t('Completed', 'خلص'), stBg: 'var(--chipGray)', stFg: 'var(--ink6)', price: '520', completed: true },
+       { pitch: 'Victory Grounds', date: t('Tuesday, Jul 28', 'الثلاثاء، 28 يوليو'), time: t('6:00 PM – 7:00 PM', '6:00 م – 7:00 م'), dur: t('1 hour', 'ساعة'), status: t('Completed', 'خلص'), stBg: 'var(--chipGray)', stFg: 'var(--ink6)', price: '170', completed: true }],
+      [{ pitch: 'Green Field Club', date: t('Wednesday, Jul 15', 'الأربعاء، 15 يوليو'), time: t('8:00 PM – 9:00 PM', '8:00 م – 9:00 م'), dur: t('1 hour', 'ساعة'), status: t('Cancelled', 'ملغي'), stBg: 'rgba(214,69,69,.1)', stFg: '#d64545', price: '200', cancelled: true }],
+    ];
+    const notif = (unread, dot, text, time) => ({ bg: unread ? T : 'var(--card)', dot, text, time });
+    const payOpts = [{ label: t('Credit card ···· 4521', 'كريدت كارد ···· 4521'), sub: t('Charged when the venue confirms', 'بيتخصم لما الملعب يأكد') }, { label: t('Wallet', 'محفظة'), sub: t('010 ···· 4521 · instant from your wallet', '010 ···· 4521 · خصم فوري من محفظتك') }].map((p, i) => Object.assign(p, { pick: set('pay')(i), bd: S.pay === i ? G : 'var(--ink12)', bg: S.pay === i ? T : 'var(--card)', dotBd: S.pay === i ? G : 'var(--ink3)', dot: S.pay === i ? G : 'transparent' }));
+    const amtOpts = [
+      { label: t('Pay full amount', 'ادفع المبلغ كامل'), sub: en ? (total + ' EGP now · nothing at the venue') : (total + ' جنيه دلوقتي · مفيش حاجة في الملعب') },
+      { label: t('Pay deposit only', 'ادفع ديبوزيت بس'), sub: en ? (deposit + ' EGP now · ' + (total - deposit) + ' EGP at the venue') : (deposit + ' جنيه دلوقتي · ' + (total - deposit) + ' جنيه في الملعب') },
+    ].map((p, i) => Object.assign(p, { pick: set('payMode')(i), bd: S.payMode === i ? G : 'var(--ink12)', bg: S.payMode === i ? T : 'var(--card)', dotBd: S.payMode === i ? G : 'var(--ink3)', dot: S.payMode === i ? G : 'transparent' }));
+    const obData = [
+      { title: t('Every pitch in the city, in your pocket', 'كل ملاعب المدينة في جيبك'), body: t('Real availability, real prices, real distances — from 5-a-side cages to full grounds.', 'مواعيد حقيقية وأسعار حقيقية ومسافات حقيقية — من ملاعب الخماسي للملاعب الكبيرة.'), bg: 'linear-gradient(150deg,#24A551,#0f6c33)', cta: t('Next', 'التالي') },
+      { title: t('Book in seconds, not phone calls', 'احجز في ثواني، من غير مكالمات'), body: t('Pick a date, a free slot, and how long you play. Done before the ad break ends.', 'اختار اليوم والمعاد الفاضي ومدة اللعب. هتخلص قبل ما الإعلان يخلص.'), bg: 'linear-gradient(150deg,#061533,#0d2a5e)', cta: t('Next', 'التالي') },
+      { title: t('Missing players? Not anymore.', 'ناقصك لاعيبة؟ مش تاني.'), body: t('Post your match and nearby hareefa fill the empty spots. Chat, coordinate, play.', 'انشر ماتشك والحريف القريبين هيكملوا الأماكن الفاضية. اتكلموا ونسقوا والعبوا.'), bg: 'linear-gradient(150deg,#187a3d,#061533)', cta: t('Get started', 'يلا نبدأ') },
+    ][S.ob];
+    const dot = (i) => S.ob === i ? { w: '22px', c: G } : { w: '7px', c: 'var(--ink15)' };
+    const sendTxt = (text) => { if (!text.trim()) return; this.setState(s => ({ msgs: s.msgs.concat([{ mine: true, text }]), draft: '' }), () => { if (this.chatEl) this.chatEl.scrollTo({ top: this.chatEl.scrollHeight, behavior: 'smooth' }); }); };
+    const screenSet = ['home', 'discover', 'bookings', 'mymatches', 'profile'];
+    const navIdx = { home: 0, discover: 1, bookings: 2, mymatches: 3, profile: 4 }[S.screen];
+    const railDef = [
+      ['Start', [['splash', 'Splash'], ['onboarding', 'Onboarding'], ['login', 'Log in'], ['signup', 'Sign up']]],
+      ['Book a pitch', [['home', 'Home'], ['search', 'Search & filters'], ['pitch', 'Pitch details'], ['booking', 'Date · time · duration'], ['summary', 'Booking summary'], ['confirmed', 'Confirmation']]],
+      ['Find players', [['findplayers', 'Post-booking prompt'], ['creatematch', 'Create match'], ['discover', 'Match discovery'], ['matchdetails', 'Match details'], ['playerprofile', 'Player profile'], ['chat', 'Match chat']]],
+      ['Manage', [['bookings', 'My bookings'], ['bookingdetails', 'Booking details'], ['mymatches', 'My matches'], ['notifications', 'Notifications'], ['profile', 'Profile'], ['settings', 'Settings']]],
+      ['States', [['s_loading', 'Loading'], ['s_empty', 'No results'], ['s_failed', 'Payment failed'], ['s_full', 'Match full'], ['s_network', 'Offline']]],
+    ];
+    const v = (k) => S.screen === k;
+    return {
+      tr,
+      arab, noArab: !arab, scrRef: (el) => { this.scr = el; },
+      rail: railDef.map(([name, items]) => ({ name, items: items.map(([k, label]) => ({ label, go: nav(k), bg: v(k) ? N : 'transparent', fg: v(k) ? '#fff' : 'var(--ink75)' })) })),
+      statusColor: ['splash', 'pitch'].includes(S.screen) ? '#FBFCFA' : N,
+      hiColor: S.screen === 'splash' ? 'rgba(251,252,250,.4)' : 'var(--ink25)',
+      vSplash: v('splash'), vOnboarding: v('onboarding'), vLogin: v('login'), vSignup: v('signup'), vHome: v('home'), vSearch: v('search'), vPitch: v('pitch'), vBooking: v('booking'), vSummary: v('summary'), vConfirmed: v('confirmed'), vFindPlayers: v('findplayers'), vCreateMatch: v('creatematch'), vDiscover: v('discover'), vMatchDetails: v('matchdetails'), vPlayerProfile: v('playerprofile'), vChat: v('chat'), vBookings: v('bookings'), vBookingDetails: v('bookingdetails'), vMyMatches: v('mymatches'), vNotifications: v('notifications'), vProfile: v('profile'), vSettings: v('settings'), vLoading: v('s_loading'), vEmpty: v('s_empty'), vFailed: v('s_failed'), vFull: v('s_full'), vNetwork: v('s_network'),
+      showNav: screenSet.includes(S.screen), nc0: navIdx === 0 ? G : 'var(--ink4)', nc1: navIdx === 1 ? G : 'var(--ink4)', nc2: navIdx === 2 ? G : 'var(--ink4)', nc3: navIdx === 3 ? G : 'var(--ink4)', nc4: navIdx === 4 ? G : 'var(--ink4)',
+      goOnboarding: nav('onboarding'), goLogin: nav('login'), goSignup: (e) => { if (e && e.preventDefault) e.preventDefault(); this.nav('signup'); }, goHome: nav('home'), goSearch: nav('search'), goPitch: nav('pitch'), goBooking: nav('booking'), goSummary: noTime ? () => {} : nav('summary'), goConfirmed: nav('confirmed'), goFindPlayers: nav('findplayers'), goCreateMatch: nav('creatematch'), goDiscover: nav('discover'), goMatchDetails: nav('matchdetails'), goPlayerProfile: nav('playerprofile'), goChat: nav('chat'), goBookings: nav('bookings'), goBookingDetails: nav('bookingdetails'), goMyMatches: nav('mymatches'), goNotifications: nav('notifications'), goProfile: nav('profile'), goSettings: nav('settings'),
+      ob0: S.ob === 0, ob1: S.ob === 1, ob2: S.ob === 2, obTitle: obData.title, obBody: obData.body, obBg: obData.bg, obCta: obData.cta,
+      obDot0: dot(0).c, obDot0w: dot(0).w, obDot1: dot(1).c, obDot1w: dot(1).w, obDot2: dot(2).c, obDot2w: dot(2).w,
+      obNext: () => S.ob < 2 ? this.setState({ ob: S.ob + 1, obDir: 1 }) : this.nav('login'),
+      obBack: () => this.setState({ ob: Math.max(0, S.ob - 1), obDir: -1 }),
+      obCanBack: S.ob > 0, obNoBack: S.ob === 0,
+      obAnim: (S.obDir === -1 ? (S.ob % 2 ? 'ehObBackB' : 'ehObBackA') : (S.ob % 2 ? 'ehObB' : 'ehObA')) + ' .5s cubic-bezier(.16,1,.3,1) both',
+      obAnimTxt: (S.obDir === -1 ? (S.ob % 2 ? 'ehObBackB' : 'ehObBackA') : (S.ob % 2 ? 'ehObB' : 'ehObA')) + ' .55s .06s cubic-bezier(.16,1,.3,1) both',
+      positions: [t('Goalkeeper', 'حارس'), t('Defender', 'مدافع'), t('Midfielder', 'وسط'), t('Winger', 'جناح'), t('Striker', 'مهاجم')].map((label, i) => Object.assign({ label, pick: set('pos')(i) }, chipS(S.pos === i))),
+      skillSeg: [t('Beginner', 'مبتدئ'), t('Intermediate', 'متوسط'), t('Advanced', 'متقدم')].map((label, i) => Object.assign({ label, pick: set('skill')(i) }, segS(S.skill === i))),
+      chips: [t('Near me', 'قريب مني'), t('Available now', 'متاح دلوقتي'), t('Today', 'النهارده'), t('Tomorrow', 'بكرة'), t('Popular', 'الأشهر'), t('Lowest price', 'الأرخص')].map((label, i) => Object.assign({ label, pick: set('chip')(i) }, chipS(S.chip === i))),
+      pitches, homeMatches: matches.slice(0, 2),
+      q: S.q, setQ: (e) => this.setState({ q: e.target.value }),
+      typeChips: typeNames.map((label, i) => Object.assign({ label: t(label, tyAr[label] || label), pick: set('ftype')(i) }, chipS(S.ftype === i))),
+      results, resultCount: String(results.length),
+      sheet: S.sheet, openSheet: () => this.setState({ sheet: true }), closeSheet: () => this.setState({ sheet: false }), openSheet2: () => this.nav('search', { sheet: true, ftype: 0 }),
+      priceChips: [t('Under 150', 'أقل من 150'), '150–220', '+220'].map((label, i) => Object.assign({ label, pick: set('fprice')(i) }, chipS(S.fprice === i))),
+      sheetTypes: typeNames.slice(1).map((label, i) => Object.assign({ label: t(label, tyAr[label] || label), pick: set('ftype')(i + 1) }, chipS(S.ftype === i + 1))),
+      distChips: [t('Under 3 km', 'أقل من 3 كم'), t('Under 5 km', 'أقل من 5 كم'), t('Anywhere', 'أي مكان')].map((label, i) => Object.assign({ label, pick: set('fdist')(i) }, chipS(S.fdist === i))),
+      selSlot: 'ph-' + S.selPitch, selPhoto: (window.__resources && window.__resources['pitch' + S.selPitch]) || ('assets/pitch-' + S.selPitch + '.png'), selName: sel.name, selArea: sel.areaLabel, selDist: sel.distLabel, selMeta: sel.areaLabel + t(', Fayoum · ', '، الفيوم · ') + sel.distLabel + t(' away · ', ' · ') + sel.reviews + t(' reviews', ' تقييم'), heroMeta: en ? ('8:00 PM free · ' + rate + ' EGP/hr · 2.1 km away') : ('8:00 م فاضية · ' + rate + ' جنيه/ساعة · على بعد 2.1 كم'), selRating: sel.rating, selReviews: String(sel.reviews), selType: sel.tyLabel, selGrad: sel.grad, selPriceStr: sel.priceStr,
+      facilities: [t('Parking', 'باركينج'), t('Changing rooms', 'غرف تغيير'), t('Showers', 'دُش'), t('Floodlights', 'كشافات'), t('Cafeteria', 'كافيتريا'), 'Wi-Fi', t('Ball rental', 'تأجير كور')],
+      previewSlots: slots.map(s => ({ label: s.label.replace(':00 ', ' '), bd: s.busy ? 'var(--ink08)' : 'rgba(36,165,81,.4)', fg: s.busy ? 'var(--ink3)' : G, bg: s.busy ? T : 'var(--card)', deco: s.busy ? 'line-through' : 'none' })),
+      wdNames: wdShort, calCells, calTitle: cm.name,
+      calPrev: () => this.setState({ calM: 0 }), calNext: () => this.setState({ calM: 1 }),
+      calPrevFg: S.calM ? N : 'var(--ink25)', calNextFg: S.calM ? 'var(--ink25)' : N,
+      slots, durs, timePicked: !noTime, noTime,
+      recurOn: S.recur, toggleRecur: () => this.setState(s => ({ recur: !s.recur, payMode: !s.recur ? 1 : 0 })),
+      recurBd: S.recur ? 'rgba(36,165,81,.45)' : 'var(--ink12)', recurBoxBg: S.recur ? T : 'var(--card)', recurTgBg: S.recur ? G : 'var(--ink15)', recurKnob: S.recur ? '22px' : '3px',
+      recurDates, amtOpts, depMode: S.payMode === 1, depositStr: String(deposit), remainStr: String(total - deposit), dueNowStr: String(dueNow),
+      lineLabel: t('Pitch', 'الملعب') + ' · ' + durStr + (S.recur ? t(' × 4 weeks', ' × 4 أسابيع') : ''),
+      dateStr, rangeStr, durStr, startStr: fmt(t0), priceStr: String(price), feeStr: String(fee), totalStr: String(total),
+      contBg: noTime ? 'var(--disabled)' : G, contFg: noTime ? 'var(--ink35)' : '#fff', contCur: noTime ? 'not-allowed' : 'pointer', contLabel: noTime ? t('Pick a start time', 'اختار ساعة البداية') : (t('Continue', 'متابعة') + ' · ' + total + ' ' + t('EGP', 'جنيه')),
+      payOpts, payLabel: payOpts[S.pay].label + (S.payMode === 1 ? t(' · deposit paid', ' · الديبوزيت مدفوع') : ''),
+      confirmBooking: nav('confirmed'),
+      squad,
+      needOpts: [1, 2, 3, 4, 5].map(n => { const on = S.need === n; return { label: String(n), pick: set('need')(n), bd: on ? G : 'var(--ink12)', bg: on ? G : 'var(--card)', fg: on ? '#fff' : N, anim: on ? 'ehPick .35s cubic-bezier(.16,1,.3,1)' : 'none' }; }),
+      lvlOpts: lvls.map((label, i) => Object.assign({ label: t(label, lvlAr[label] || label), pick: set('lvl')(i) }, chipS(S.lvl === i))),
+      privOpts: [t('Public', 'عام'), t('Friends only', 'الأصحاب بس')].map((label, i) => Object.assign({ label, pick: set('priv')(i) }, segS(S.priv === i))),
+      needStr: en ? (S.need + (S.need === 1 ? ' player' : ' players')) : (S.need === 1 ? 'لاعيب واحد' : S.need + ' لاعيبة'),
+      postMatch: () => this.nav('discover', { posted: true }),
+      posted: S.posted,
+      findChips: [t('All matches', 'كل الماتشات'), t('Today', 'النهارده'), t('Near me', 'قريب مني'), t('My level', 'مستوايا')].map((label, i) => Object.assign({ label, pick: set('findChip')(i) }, chipS(S.findChip === i))),
+      matches,
+      mPitch: mm.pitch, mDay: mm.day, mTime: mm.time, mDur: mm.dur, mLevel: mm.level, mOrg: mm.org, mInitial: mm.initial, mAvBg: mm.avBg, mAvFg: mm.avFg, mJoined: String(mm.joined), mTotal: String(mm.total), mNeeded: String(mm.total - mm.joined), mDesc: mm.desc, mGrad: mm.grad, mSlots,
+      mJoinLabel: mSt === 'joined' ? t('Open squad chat', 'افتح شات الشلة') : mSt === 'pending' ? (en ? ('Request sent — waiting for ' + mm.org.split(' ')[0]) : ('الطلب اتبعت — في انتظار ' + mm.org.split(' ')[0])) : t('Request to join', 'اطلب الانضمام'), mJoinBg: mSt === 'pending' ? 'var(--tint)' : mSt === 'joined' ? N : G, mJoinFg: mSt === 'pending' ? 'var(--ink55)' : '#fff', mJoinAction: doJoin(S.selMatch),
+      msgs: S.msgs.map(m => ({ system: !!m.sys, other: !m.sys && !m.mine, mine: !!m.mine, text: m.ar ? t(m.text, m.ar) : m.text, who: m.whoAr ? t(m.who, m.whoAr) : (m.who || ''), initial: m.initial || '', avBg: m.avBg || T, avFg: m.avFg || G })),
+      themeAttr: S.dk ? 'dark' : 'light', symbolBg: "url('" + (S.dk ? ((window.__resources && window.__resources.symbolDark) || 'assets/symbol-reverse.png') : ((window.__resources && window.__resources.symbolLight) || 'assets/symbol.png')) + "')", dirAttr: en ? 'ltr' : 'rtl',
+      flipDk: () => this.setState(s => ({ dk: !s.dk })), dkBg: S.dk ? G : 'var(--ink15)', dkKnob: S.dk ? '22px' : '3px',
+      setLangEn: () => this.setState({ lang: 'en' }), setLangAr: () => this.setState({ lang: 'ar' }),
+      langEnBg: en ? 'var(--navyBtn)' : 'transparent', langEnFg: en ? '#fff' : 'var(--ink6)', langArBg: en ? 'transparent' : 'var(--navyBtn)', langArFg: en ? 'var(--ink6)' : '#fff',
+      tNav0: t('Home','الرئيسية'), tNav1: t('Find','دوّر'), tNav2: t('Bookings','حجوزاتي'), tNav3: t('Matches','ماتشاتي'), tNav4: t('Profile','حسابي'),
+      tBookTitle: t('My bookings','حجوزاتي'), tMatchTitle: t('My matches','ماتشاتي'), tFindTitle: t('Find a match','دوّر على ماتش'), tFindSub: t('Matches near you that need players.','ماتشات قريبة منك محتاجة لاعيبة.'),
+      tNearby: t('Nearby pitches','ملاعب قريبة'), tLooking: t('Looking for players','بيدوروا على لاعيبة'), tSeeAll: t('See all','الكل'), tBookNow: t('Book now','احجز دلوقتي'), tBookPitch: t('Book a pitch','احجز ملعب'), tSearchPh: t('Search for a football pitch...','دوّر على ملعب كورة...'),
+      tPlayingIn: t('Playing in','بتلعب في'),
+      tSettingsTitle: t('Settings','الإعدادات'), tNotifTitle: t('Notifications','الإشعارات'), tSecNotif: t('Notifications','الإشعارات'), tSecGeneral: t('General','عام'), tSecAppear: t('Appearance','المظهر'), tDark: t('Dark mode','الوضع الليلي'), tDarkSub: t('Easier on the eyes at night','مريح للعين بالليل'), tLanguage: t('Language','اللغة'), tPayment: t('Payment methods','طرق الدفع'), tPrivacy: t('Privacy','الخصوصية'), tHelp: t('Help & support','المساعدة والدعم'), tLogout: t('Log out','تسجيل الخروج'), tEdit: t('Edit','تعديل'),
+      chatRef: (el) => { this.chatEl = el; if (el) el.scrollTop = el.scrollHeight; },
+      draft: S.draft, setDraft: (e) => this.setState({ draft: e.target.value }),
+      draftKey: (e) => { if (e.key === 'Enter') sendTxt(this.state.draft); },
+      send: () => sendTxt(this.state.draft),
+      quick1: () => sendTxt(t('On my way', 'في الطريق')), quick2: () => sendTxt(t("I've arrived", 'وصلت')), quick3: () => sendTxt(t('Pitch pin: Dream Sports Arena, Gate 2 — maps.app/eh84213', 'لوكيشن الملعب: دريم سبورتس أرينا، بوابة 2 — maps.app/eh84213')),
+      bookTabs: [t('Upcoming','قادمة'), t('Completed','خلصت'), t('Cancelled','ملغية')].map((label, i) => Object.assign({ label, pick: set('bookTab')(i) }, segS(S.bookTab === i))),
+      bookingsList: BK[S.bookTab], bookingsEmpty: BK[S.bookTab].length === 0,
+      matchTabs: [t('Hosting','منظمها'), t('Joined','منضم'), t('Completed','خلصت')].map((label, i) => Object.assign({ label, pick: set('matchTab')(i) }, segS(S.matchTab === i))),
+      mtHosting: S.matchTab === 0, mtJoined: S.matchTab === 1, mtCompleted: S.matchTab === 2,
+      notifsToday: [notif(true, G, t('Your booking at Dream Sports Arena is confirmed for Friday 8:00 PM.', 'حجزك في دريم سبورتس أرينا اتأكد ليوم الجمعة 8 م.'), t('2 min ago', 'من دقيقتين')), notif(true, L, t('Ahmed Hassan requested to join your match.', 'أحمد حسن طلب الانضمام لماتشك.'), t('1 hr ago', 'من ساعة')), notif(false, G, t('Your match now has 7/8 players — 1 spot left.', 'ماتشك بقى فيه 7/8 لاعيبة — فاضل مكان واحد.'), t('3 hrs ago', 'من 3 ساعات'))],
+      notifsEarlier: [notif(false, 'var(--ink25)', t('Reminder: your match at Champions Park starts in 2 hours.', 'تذكير: ماتشك في تشامبيونز بارك هيبدأ بعد ساعتين.'), t('Yesterday', 'امبارح')), notif(false, '#d64545', t('Your booking at Green Field Club on Jul 15 was cancelled and refunded.', 'حجزك في جرين فيلد يوم 15 يوليو اتلغى واتسترد.'), t('Jul 15', '15 يوليو'))],
+      profileMenu: [
+        { label: t('Payment methods','طرق الدفع'), sub: t('Card · Wallet','كارت · محفظة'), go: nav('settings') },
+        { label: t('Notifications','الإشعارات'), sub: t('All on','الكل شغال'), go: nav('notifications') },
+        { label: t('Privacy','الخصوصية'), sub: t('Public profile','بروفايل عام'), go: nav('settings') },
+        { label: t('My reviews','تقييماتي'), sub: t('★ 4.7 from 31 players', '★ 4.7 من 31 لاعيب'), go: nav('playerprofile') },
+        { label: t('Help & support','المساعدة والدعم'), sub: '', go: nav('settings') },
+        { label: t('Settings','الإعدادات'), sub: '', go: nav('settings') },
+      ],
+      toggles: [
+        { key: 'rem', label: t('Match reminders','تذكير بالماتشات'), sub: t('2 hours before kick-off','قبل الماتش بساعتين') },
+        { key: 'upd', label: t('Booking updates','تحديثات الحجز'), sub: t('Confirmations and changes','التأكيدات والتغييرات') },
+        { key: 'mkt', label: t('Offers & news','عروض وأخبار'), sub: t('Occasional, we promise','مش هنكتر، وعد') },
+      ].map(t => ({ label: t.label, sub: t.sub, bg: S.tg[t.key] ? '#24A551' : 'var(--ink15)', knob: S.tg[t.key] ? '22px' : '3px', flip: () => this.setState(s => ({ tg: Object.assign({}, s.tg, { [t.key]: !s.tg[t.key] }) })) })),
+    };
+  }
+}
+</script>
+</body>
+</html>

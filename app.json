@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "ELHAREEF",
+    "slug": "elhareef",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.elhareef.app"
+    },
+    "android": {
+      "package": "com.elhareef.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#061533",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/brand/splash-logo.png",
+          "imageWidth": 222,
+          "backgroundColor": "#061533"
+        }
+      ],
+      "expo-localization"
+    ]
+  }
+}
