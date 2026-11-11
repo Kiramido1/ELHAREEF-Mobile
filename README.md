@@ -7,9 +7,8 @@
 **The football pitch booking & matchmaking app for the Egyptian market.**
 Book a pitch in seconds, post your match, and let nearby *hareefa* fill the empty spots.
 
-[![Expo](https://img.shields.io/badge/Expo-SDK%2057-000020?logo=expo&logoColor=white)](https://expo.dev)
-[![React Native](https://img.shields.io/badge/React%20Native-0.86-61DAFB?logo=react&logoColor=white)](https://reactnative.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Flutter](https://img.shields.io/badge/Flutter-3-02569B?logo=flutter&logoColor=white)](https://flutter.dev)
+[![Dart](https://img.shields.io/badge/Dart-3-0175C2?logo=dart&logoColor=white)](https://dart.dev)
 [![i18n](https://img.shields.io/badge/i18n-English%20%7C%20%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-24A551)](#-localization--rtl)
 [![Made in Fayoum](https://img.shields.io/badge/Made%20in-Fayoum%20%F0%9F%87%AA%F0%9F%87%AC-BDF961)](#)
 
@@ -62,53 +61,44 @@ Book a pitch in seconds, post your match, and let nearby *hareefa* fill the empt
 - Smooth, finger-tracked **scroll-reveal** animations and soft selection cross-fades
 - Loading skeletons, empty states, offline state, and friendly error recovery
 - Secure auth screens: password with show/hide, validation, and a 3-step **forgot-password** flow (SMS code → new password)
-
----
-
 ## 🚀 Getting started
 
 ```bash
-# 1 · Install dependencies
-npm install
-
-# 2 · Start the dev server
-npm start          # scan the QR with Expo Go
-
-# Platform shortcuts
-npm run android    # Android device/emulator
-npm run ios        # iOS simulator (macOS)
-npm run web        # Web preview at http://localhost:8081
+flutter pub get
+flutter run                 # Android device/emulator (iOS needs macOS + Xcode)
+flutter test                # logic tests + every-screen render test
+flutter build apk --release # signed with the debug key until a keystore is set up
 ```
 
-> **Requirements:** Node 20+, npm 10+, and the [Expo Go](https://expo.dev/go) app for on-device preview.
+> **Requirements:** Flutter 3 (Dart SDK ^3.13).
 
 ---
 
 ## 🏗️ Architecture
 
 ```
-src/
-├── theme/         Design tokens — colors (light + dark), typography, spacing, radii, shadows
-├── i18n/          Full EN/AR dictionary + RTL-aware translation hooks
-├── types/         Domain models (Pitch, Match, BookingRecord, ChatMessage, …)
+lib/
+├── main.dart      App entry, stack routes
+├── scope.dart     App-wide providers (theme, i18n, stores) via InheritedNotifier
+├── theme/         Design tokens — colors (light + dark), typography, spacing, radii
+├── i18n/          Full EN/AR dictionary + RTL-aware translation helpers
+├── types.dart     Domain models (Pitch, Match, BookingRecord, ChatMessage, …)
 ├── services/      Mock repositories with simulated latency & failure modes
 │                  (pitches · matches · bookings · chat · players · network)
-├── state/         React contexts — BookingContext (selections + price math),
-│                  MatchesContext (join lifecycle), ChatContext (thread)
-├── components/    Design-system primitives — Txt, Button, Chip, Segmented,
-│                  ToggleSwitch, ProgressBar, Avatar, Card, Input, PasswordInput,
-│                  PitchArt, Skeleton, TabBar, anim (motion system), icons/
-├── navigation/    Typed root stack + bottom tabs (custom tab bar)
-├── screens/       26 screens — every flow from splash to settings
-└── constants/     Static asset maps (pitch photography)
+├── state/         ChangeNotifier stores — booking (selections + price math),
+│                  matches (join lifecycle), chat (thread)
+├── widgets/       Design-system primitives, icons, inputs, media, motion (anim.dart)
+├── navigation/    Navigator helpers + bottom tabs
+└── screens/       26 screens — every flow from splash to settings
 ```
 
 **Design principles**
 
-- **Single source of truth for tokens** — every color, radius, and font weight lives in `src/theme/`; screens never hard-code values.
-- **UI ⇄ data separation** — screens only consume async service signatures. Swapping the mock bodies in `src/services/` for real endpoints requires **zero UI changes**.
-- **Typed navigation** — full `RootStackParamList` / `MainTabParamList` coverage; no stringly-typed routes.
-- **Native-driver motion** — the animation system (`components/anim.tsx`) runs on the UI thread: screen transitions, selection cross-fades, scroll-linked reveals, and spring toggles.
+- **Single source of truth for tokens** — every color, radius, and font weight lives in `lib/theme/`.
+- **UI ⇄ data separation** — screens only consume async service signatures. Swapping the mock bodies in `lib/services/` for real endpoints requires **no UI changes**.
+- **No heavy state library** — three small stores on built-in `ChangeNotifier` (`context.watch<T>()` / `context.read<T>()`).
+
+---
 
 ---
 
@@ -127,7 +117,7 @@ src/
 
 ## 🌍 Localization & RTL
 
-The app ships with a complete **English / Egyptian-Arabic** dictionary (`src/i18n/translations.ts`).
+The app ships with a complete **English / Egyptian-Arabic** dictionary (`lib/i18n/translations.dart`).
 Switching to العربية from Settings flips — live, without a reload:
 
 - Text, fonts (Archivo ↔ IBM Plex Sans Arabic), and alignment
@@ -147,7 +137,15 @@ Switching to العربية from Settings flips — live, without a reload:
 | Cloud White | `#FBFCFA` |
 
 Typography: **Archivo** (400–800) for UI · **IBM Plex Sans Arabic** (400/600) for Arabic.
-Dark mode redefines the full palette (`src/theme/colors.ts`) — no ad-hoc dark overrides.
+Dark mode redefines the full palette (`lib/theme/colors.dart`) — no ad-hoc dark overrides.
+
+---
+
+## ⚠️ Known limitations
+
+- **No backend** — all services return hard-coded data after a simulated delay (`lib/services/network.dart`), including the designed failure paths (first card payment declines, a match fills up, offline).
+- **iOS** is configured (bundle id `com.elhareef.app`, icon, launch screen) but not yet built — requires macOS/Xcode.
+- **Release signing** uses the debug key until a release keystore (`android/key.properties`) is configured.
 
 ---
 
@@ -157,14 +155,14 @@ Dark mode redefines the full palette (`src/theme/colors.ts`) — no ad-hoc dark 
 - [ ] Phone-number OTP authentication
 - [ ] Payment gateway integration (card / mobile wallet)
 - [ ] Push notifications (match reminders, join requests)
-- [ ] Player ratings & reviews
+- [ ] Release keystore + Play Store listing
 - [ ] Venue-owner dashboard
 
 ---
 
 ## 🧰 Tech stack
 
-`Expo SDK 57` · `React Native 0.86` · `TypeScript (strict)` · `React Navigation 7` · `react-native-svg` · `expo-linear-gradient` · `@expo-google-fonts`
+`Flutter 3` · `Dart 3` · `flutter_svg` · `flutter_localizations` · bundled Archivo & IBM Plex Sans Arabic fonts
 
 ---
 
