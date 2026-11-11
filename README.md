@@ -66,7 +66,8 @@ Book a pitch in seconds, post your match, and let nearby *hareefa* fill the empt
 ```bash
 flutter pub get
 flutter run                 # Android device/emulator (iOS needs macOS + Xcode)
-flutter test                # logic tests + every-screen render test
+flutter analyze             # static analysis (clean)
+flutter test                # domain/repository/controller tests + every-screen render test
 flutter build apk --release # signed with the debug key until a keystore is set up
 ```
 
@@ -76,29 +77,43 @@ flutter build apk --release # signed with the debug key until a keystore is set 
 
 ## 🏗️ Architecture
 
+Feature-first **Clean Architecture** — each feature owns its `domain`, `data` and `presentation` layers.
+
 ```
 lib/
-├── main.dart      App entry, stack routes
-├── scope.dart     App-wide providers (theme, i18n, stores) via InheritedNotifier
-├── theme/         Design tokens — colors (light + dark), typography, spacing, radii
-├── i18n/          Full EN/AR dictionary + RTL-aware translation helpers
-├── types.dart     Domain models (Pitch, Match, BookingRecord, ChatMessage, …)
-├── services/      Mock repositories with simulated latency & failure modes
-│                  (pitches · matches · bookings · chat · players · network)
-├── state/         ChangeNotifier stores — booking (selections + price math),
-│                  matches (join lifecycle), chat (thread)
-├── widgets/       Design-system primitives, icons, inputs, media, motion (anim.dart)
-├── navigation/    Navigator helpers + bottom tabs
-└── screens/       26 screens — every flow from splash to settings
+├── main.dart                 Opens storage, builds the composition root, runs the app
+├── app/                      App shell: route table (app.dart), DI root (di.dart), bottom tabs
+├── core/
+│   ├── di/                   Scope<T> (InheritedNotifier) + context.watch/read
+│   ├── error/                Sealed AppFailure (network, match full, payment declined, slot taken, validation)
+│   ├── i18n/                 EN/AR dictionaries, Formatters (dates, plurals, hours), persisted language
+│   ├── navigation/           Navigator helpers
+│   ├── network/              Simulated transport for the mock datasources
+│   ├── storage/              KeyValueStore port → SharedPrefsStore (app) / MemoryStore (tests)
+│   ├── theme/                Tokens, light/dark palettes, persisted ThemeController
+│   ├── time/                 Injectable Clock (FixedClock in tests)
+│   └── widgets/              Design-system primitives, inputs, media, motion, toast
+└── features/
+    ├── auth/                 Session, Egyptian phone validation, onboarding-once
+    ├── pitches/              Pitch catalogue, search & filters (price · distance · type · text)
+    ├── booking/              Booking rules, quote, confirm/cancel use cases, history
+    ├── matches/              Discover, join/leave/host use cases, my matches
+    ├── chat/                 Squad chat thread
+    └── profile/              Profile, settings, notifications
+        └── <feature>/
+            ├── domain/       Entities, repository interfaces, use cases (pure Dart)
+            ├── data/         Datasources, models, repository implementations
+            └── presentation/ ChangeNotifier controllers, screens
 ```
 
 **Design principles**
 
-- **Single source of truth for tokens** — every color, radius, and font weight lives in `lib/theme/`.
-- **UI ⇄ data separation** — screens only consume async service signatures. Swapping the mock bodies in `lib/services/` for real endpoints requires **no UI changes**.
-- **No heavy state library** — three small stores on built-in `ChangeNotifier` (`context.watch<T>()` / `context.read<T>()`).
-
----
+- **Dependency rule** — `domain` is pure Dart and imports nothing from `data` or Flutter; screens talk to controllers, controllers to use cases/repository interfaces.
+- **One composition root** — `lib/app/di.dart` is the only place that knows concrete implementations. Swapping a mock datasource for a real API changes nothing above the data layer.
+- **Use cases where rules live** — `ConfirmBooking`, `CancelBooking`, `JoinMatch`, `LeaveMatch`, `HostMatch`, `SignIn`/`SignUp`. Plain reads go straight through the repository (no pass-through use cases).
+- **No heavy state library** — built-in `ChangeNotifier` controllers exposed via `InheritedNotifier`.
+- **Deterministic time** — every date rule reads an injected `Clock`, so tests pin "now".
+- **Single source of truth for tokens** — every color, radius and font weight lives in `lib/core/theme/`.
 
 ---
 
@@ -109,15 +124,21 @@ lib/
 | Price | `duration × pitch rate × sessions` (+ 20 EGP booking fee) |
 | Weekly repeat | 4 sessions, deposit locks all slots |
 | Deposit | `max(50, 25% of total, rounded to 5 EGP)` |
-| Slots | 4 PM – 10 PM, busy slots disabled with strikethrough |
+| Slots | Start 4 PM – 10 PM, venue closes at midnight; busy and past hours disabled |
+| Overlap | A booking can't cover a busy hour or run past closing — longer durations are disabled |
+| Booking window | Today through the next 60 days |
+| Cancellation | Any upcoming booking; free until 12 h before kick-off |
+| Slot hold | 10 minutes after a declined payment, with a live countdown |
 | Join capacity | Server-confirmed; a full match returns `MatchFullError` → designed "match full" state |
-| Payments | First card attempt declines (demo of the failure state); retry & cash-at-venue succeed |
+| Payments | First card attempt per session declines (demo of the failure state); retry & cash-at-venue succeed |
+| Phone | Egyptian mobile only: `01[0125]` + 8 digits (accepts `0…`, `+20…`) |
+| Persistence | Session, onboarding, language, theme, bookings, joined/hosted matches (`shared_preferences`) |
 
 ---
 
 ## 🌍 Localization & RTL
 
-The app ships with a complete **English / Egyptian-Arabic** dictionary (`lib/i18n/translations.dart`).
+The app ships with a complete **English / Egyptian-Arabic** dictionary (`lib/core/i18n/`).
 Switching to العربية from Settings flips — live, without a reload:
 
 - Text, fonts (Archivo ↔ IBM Plex Sans Arabic), and alignment
@@ -137,13 +158,13 @@ Switching to العربية from Settings flips — live, without a reload:
 | Cloud White | `#FBFCFA` |
 
 Typography: **Archivo** (400–800) for UI · **IBM Plex Sans Arabic** (400/600) for Arabic.
-Dark mode redefines the full palette (`lib/theme/colors.dart`) — no ad-hoc dark overrides.
+Dark mode redefines the full palette (`lib/core/theme/colors.dart`) — no ad-hoc dark overrides.
 
 ---
 
 ## ⚠️ Known limitations
 
-- **No backend** — all services return hard-coded data after a simulated delay (`lib/services/network.dart`), including the designed failure paths (first card payment declines, a match fills up, offline).
+- **No backend** — all services return hard-coded data after a simulated delay (`lib/core/network/fake_network.dart`); bookings and match membership are persisted on-device only, including the designed failure paths (first card payment declines, a match fills up, offline).
 - **iOS** is configured (bundle id `com.elhareef.app`, icon, launch screen) but not yet built — requires macOS/Xcode.
 - **Release signing** uses the debug key until a release keystore (`android/key.properties`) is configured.
 
@@ -162,7 +183,7 @@ Dark mode redefines the full palette (`lib/theme/colors.dart`) — no ad-hoc dar
 
 ## 🧰 Tech stack
 
-`Flutter 3` · `Dart 3` · `flutter_svg` · `flutter_localizations` · bundled Archivo & IBM Plex Sans Arabic fonts
+`Flutter 3` · `Dart 3` · `flutter_svg` · `flutter_localizations` · `shared_preferences` · bundled Archivo & IBM Plex Sans Arabic fonts
 
 ---
 

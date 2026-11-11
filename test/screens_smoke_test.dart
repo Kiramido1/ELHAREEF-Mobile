@@ -2,18 +2,21 @@
 // Arabic/dark, with the real fonts loaded — any overflow or exception fails.
 import 'dart:io';
 
-import 'package:elhareef/i18n/i18n.dart';
-import 'package:elhareef/main.dart';
-import 'package:elhareef/navigation/nav.dart';
-import 'package:elhareef/scope.dart';
+import 'package:elhareef/app/app.dart';
+import 'package:elhareef/app/di.dart';
+import 'package:elhareef/core/di/scope.dart';
+import 'package:elhareef/core/i18n/i18n.dart';
+import 'package:elhareef/core/navigation/nav.dart';
+import 'package:elhareef/core/storage/key_value_store.dart';
+import 'package:elhareef/core/time/clock.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const routes = <(String, Object?)>[
   ('Onboarding', null), ('Login', null), ('Signup', null), ('ForgotPassword', null),
   ('Tabs', null), ('Search', null), ('Search', true), ('Pitch', 0), ('Pitch', 3),
-  ('Booking', null), ('Summary', null), ('Confirmed', null), ('FindPlayers', null),
-  ('CreateMatch', null), ('MatchDetails', 0), ('MatchDetails', 2), ('MatchFull', 2),
+  ('Booking', null), ('Summary', null), ('Confirmed', null), ('Confirmed', 'EH-NONE'),
+  ('FindPlayers', null), ('CreateMatch', null), ('MatchDetails', 0), ('MatchDetails', 2), ('MatchFull', 2),
   ('PlayerProfile', 0), ('Chat', null), ('BookingDetails', null), ('Notifications', null),
   ('Settings', null), ('PaymentFailed', null), ('Offline', null),
 ];
@@ -41,7 +44,10 @@ void main() {
       tester.view.devicePixelRatio = 2.625;
       addTearDown(tester.view.reset);
 
-      await tester.pumpWidget(const AppScopes(child: ElhareefApp()));
+      // Thursday evening: some of today's slots are past, the rest open.
+      final deps = AppDependencies(store: MemoryStore(), clock: FixedClock(DateTime(2026, 11, 12, 18, 30)));
+      await tester.runAsync(deps.warmUp);
+      await tester.pumpWidget(AppScopes(deps: deps, child: const ElhareefApp()));
       final ctx = tester.element(find.byType(ElhareefApp));
       if (arabicDark) {
         ctx.read<I18n>().setLang('ar');
